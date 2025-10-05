@@ -32,8 +32,9 @@ export default function FeaturesSection() {
           </h2>
           <p className="text-sm sm:text-base md:text-base text-gray-400 max-w-3xl mx-auto px-2 md:px-0 leading-relaxed">
             Afryvo Analytics combines real-time dashboards, enterprise grade
-            data intelligence, and AI-driven chatbots into a single ecosystem,
-            helping organizations unlock insights and deliver measurable impact.
+            data intelligence, and AI-driven chatbots into a single
+            ecosystem, helping organizations unlock insights and deliver
+            measurable impact.
           </p>
         </div>
 
