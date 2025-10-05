@@ -32,33 +32,33 @@ const socialLinks = [
 export default function Footer() {
   return (
     <footer className="w-full border-t border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 pt-8 pb-4 px-6 md:px-16 lg:px-32">
-      <div className="max-w-7xl mx-auto flex flex-row flex-wrap justify-between items-center gap-6 md:gap-8">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between md:items-start gap-8">
         {/* Left: Logo and description */}
-        <div className="flex flex-col items-center gap-7 md:gap-2">
-          <div className="w-full flex justify-center">
-            <Image
-              src="/logo.png"
-              alt="Afryvo Analytics Logo"
-              width={110}
-              height={110}
-              className="object-contain ml-0"
-            />
-          </div>
-          <p className="text-gray-400 text-lg md:text-base mt-4 md:mt-2 text-center font-medium md:font-normal">
+        <div className="flex flex-col items-center md:items-start gap-4">
+          <Image
+            src="/logo.png"
+            alt="Afryvo Analytics Logo"
+            width={120}
+            height={120}
+            className="object-contain"
+          />
+          <p className="text-gray-400 text-base font-medium text-center md:text-left md:max-w-xs">
             Built to See What Others Miss
           </p>
         </div>
-        <div className="flex flex-col items-center gap-1 md:gap-2">
-          <p className="text-gray-500 dark:text-gray-400 text-base md:text-lg leading-relaxed text-center md:text-left flex flex-col md:flex-row items-center gap-1 md:gap-2">
-            <Mail className="w-5 h-5" />
-            <span>info@afryvoanalytics.com</span>
-          </p>
-          <p className="text-gray-400 text-base md:text-lg mt-0 md:mt-2 flex flex-col md:flex-row items-center gap-1 md:gap-3 font-semibold">
-            <MapPin className="w-6 h-6 md:w-7 md:h-7" />
-            <span className="text-center md:text-left">
+        
+        {/* Right: Contact Info */}
+        <div className="flex flex-col items-center md:items-start gap-4">
+          <div className="flex items-center gap-3">
+            <Mail className="w-5 h-5 text-gray-400" />
+            <span className="text-gray-400 text-base">info@afryvoanalytics.com</span>
+          </div>
+          <div className="flex items-start gap-3">
+            <MapPin className="w-5 h-5 text-gray-400 mt-0.5" />
+            <span className="text-gray-400 text-base text-center md:text-left">
               NSTP, NUST, H-12, Islamabad, Pakistan
             </span>
-          </p>
+          </div>
         </div>
       </div>
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 mt-8 pt-4 border-t border-gray-200 dark:border-gray-700 text-xs md:text-sm px-2">
