@@ -40,9 +40,9 @@ const ServiceCard = ({
   description: string;
 }) => {
   return (
-    <Card className="bg-[#111] border-gray-800 hover:border-gray-700 transition-all">
+    <Card className="bg-gray-900/30 border-gray-800 hover:border-gray-700 transition-all">
       <CardHeader className="p-5">
-        <div className="w-12 h-12 rounded-full bg-[#525252] flex items-center justify-center mb-4">
+        <div className="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center mb-4">
           <Icon className="h-6 w-6 text-white" />
         </div>
         <CardTitle className="text-white text-xl mb-2">{title}</CardTitle>
@@ -194,7 +194,7 @@ export default function ServicesSection() {
             className="w-full"
           >
             <div className="flex justify-center mb-8">
-              <TabsList className="grid grid-cols-3 bg-[#525252] rounded-md p-1 max-w-md mx-auto">
+              <TabsList className="grid grid-cols-3 bg-gray-800 rounded-md p-1 max-w-md mx-auto">
                 <TabsTrigger
                   value="business"
                   className="text-white data-[state=active]:bg-black"
@@ -290,7 +290,7 @@ export default function ServicesSection() {
           </Tabs>
         </div>
 
-  {/* Testimonial Section removed as requested */}
+        {/* Testimonial Section removed as requested */}
       </div>
     </section>
   );

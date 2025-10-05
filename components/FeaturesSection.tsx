@@ -25,20 +25,19 @@ export default function FeaturesSection() {
 
   return (
     <section id="FeaturesSection" className="w-full">
-      <div className="space-y-8 px-0 md:space-y-16 lg:space-y-20">
+      <div className="space-y-6 px-4 sm:px-6 md:px-0 md:space-y-16 lg:space-y-20">
         <div className="relative z-10 w-full space-y-6 text-center">
-          <h2 className="text-balance text-3xl font-semibold lg:text-5xl">
+          <h2 className="text-balance text-2xl sm:text-3xl md:text-3xl lg:text-5xl font-semibold px-2 md:px-0">
             Transforming Data into Intelligent Outcomes
           </h2>
-          <p>
+          <p className="text-sm sm:text-base md:text-base text-gray-400 max-w-3xl mx-auto px-2 md:px-0 leading-relaxed">
             Afryvo Analytics combines real-time dashboards, enterprise grade
-            data intelligence, and AI-driven chatbots into a single
-            ecosystem,helping organizations unlock insights and deliver
-            measurable impact.
+            data intelligence, and AI-driven chatbots into a single ecosystem,
+            helping organizations unlock insights and deliver measurable impact.
           </p>
         </div>
 
-        <div className="grid gap-12 w-full md:grid-cols-2 lg:gap-20">
+        <div className="grid gap-6 w-full md:grid-cols-2 md:gap-12 lg:gap-20">
           <Accordion
             type="single"
             value={activeItem}
@@ -47,9 +46,9 @@ export default function FeaturesSection() {
           >
             <AccordionItem value="item-1">
               <AccordionTrigger>
-                <div className="flex items-center gap-2 text-base w-full justify-between">
-                  <span className="flex items-center gap-2">
-                    <Database className="size-4" />
+                <div className="flex items-center gap-2 text-sm sm:text-base w-full justify-between">
+                  <span className="flex items-center gap-1.5 sm:gap-2">
+                    <Database className="size-3 sm:size-4" />
                     Past 6 years of excellence
                   </span>
                   <svg
@@ -78,9 +77,9 @@ export default function FeaturesSection() {
             </AccordionItem>
             <AccordionItem value="item-2">
               <AccordionTrigger>
-                <div className="flex items-center gap-2 text-base w-full justify-between">
-                  <span className="flex items-center gap-2">
-                    <Sparkles className="size-4" />
+                <div className="flex items-center gap-2 text-sm sm:text-base w-full justify-between">
+                  <span className="flex items-center gap-1.5 sm:gap-2">
+                    <Sparkles className="size-3 sm:size-4" />
                     350+ successful projects
                   </span>
                   <svg
@@ -108,9 +107,9 @@ export default function FeaturesSection() {
             </AccordionItem>
             <AccordionItem value="item-3">
               <AccordionTrigger>
-                <div className="flex items-center gap-2 text-base w-full justify-between">
-                  <span className="flex items-center gap-2">
-                    <IdCard className="size-4" />
+                <div className="flex items-center gap-2 text-sm sm:text-base w-full justify-between">
+                  <span className="flex items-center gap-1.5 sm:gap-2">
+                    <IdCard className="size-3 sm:size-4" />
                     Real-time dashboards & KPIs
                   </span>
                   <svg
@@ -138,9 +137,9 @@ export default function FeaturesSection() {
             </AccordionItem>
             <AccordionItem value="item-4">
               <AccordionTrigger>
-                <div className="flex items-center gap-2 text-base w-full justify-between">
-                  <span className="flex items-center gap-2">
-                    <Bot className="size-4" />
+                <div className="flex items-center gap-2 text-sm sm:text-base w-full justify-between">
+                  <span className="flex items-center gap-1.5 sm:gap-2">
+                    <Bot className="size-3 sm:size-4" />
                     AI chatbots & Agentic AI
                   </span>
                   <svg
@@ -168,8 +167,8 @@ export default function FeaturesSection() {
             </AccordionItem>
           </Accordion>
 
-          <div className="relative flex overflow-hidden p-2 w-full">
-            <div className="relative w-full mb-0 max-h-[520px]">
+          <div className="relative flex overflow-hidden p-1 sm:p-2 w-full">
+            <div className="relative w-full mb-0 max-h-[300px] sm:max-h-[400px] md:max-h-[520px]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`${activeItem}-id`}
@@ -180,8 +179,8 @@ export default function FeaturesSection() {
                   className="size-full overflow-hidden shadow-md"
                 >
                   <Image
-                    src="/herodashboard.png"
-                    className="w-full h-auto max-h-[520px] scale-110 object-contain rounded-2xl dark:mix-blend-lighten"
+                    src="/d3.png"
+                    className="w-full h-auto max-h-[300px] sm:max-h-[400px] md:max-h-[520px] scale-105 sm:scale-110 object-contain rounded-lg sm:rounded-2xl dark:mix-blend-lighten"
                     alt="Database visualization"
                     width={1207}
                     height={929}

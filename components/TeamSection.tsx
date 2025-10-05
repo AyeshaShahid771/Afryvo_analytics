@@ -29,7 +29,7 @@ const teamMembers = [
   {
     name: "Ayesha Shahid",
     role: "AI Engineer",
-    image: "/member23.png",
+    image: "/member43.png",
   },
   {
     name: "Muzammil Shoukat",
@@ -46,9 +46,9 @@ const teamMembers = [
 export default function TeamSection() {
   return (
     <section id="team" className="py-20 text-white">
-      <div className="max-w-3xl mx-auto text-center mb-16">
-        <h2 className="text-5xl font-bold mb-4">Meet Our Team</h2>
-        <p className="text-lg text-gray-400">
+      <div className="max-w-3xl mx-auto text-center mb-16 px-4">
+        <h2 className="text-4xl md:text-5xl font-bold mb-4">Meet Our Team</h2>
+        <p className="text-base md:text-lg text-gray-400 leading-relaxed md:leading-normal">
           Our team is extraordinary—combining unique talents, relentless
           passion, and a drive for innovation to consistently deliver
           exceptional results for our clients every time.

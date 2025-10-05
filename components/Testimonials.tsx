@@ -22,9 +22,7 @@ const testimonials: Testimonial[] = [
     name: "David Diliberto",
     role: "Design Lead, Shopify",
     text: "Ahad went well above my expectations. He’s a very smart analyst who listened to my project requirements and provided valuable input on how it could be better. He took what I needed and quickly had something for me to review and work with. Looking forward to our continued work together. :-)",
-  
-  }
-  
+  },
 ];
 
 export default function Testimonials() {
@@ -32,27 +30,27 @@ export default function Testimonials() {
     <section id="testimonials" className="py-16 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-12 gap-6">
-          <div>
-              <h2 className="text-5xl font-extrabold tracking-tight mt-2 mb-0 text-foreground">
+          <div className="text-center md:text-left">
+            <h2 className="text-5xl md:text-6xl font-extrabold tracking-tight mt-2 mb-0 text-foreground">
               350+
             </h2>
-            <p className="text-xl text-muted-foreground mt-10 mb-2">
-              Dashboards and AI solutions built 
+            <p className="text-base md:text-xl text-muted-foreground mt-4 md:mt-10 mb-2">
+              Dashboards and AI solutions built
             </p>
           </div>
-          <div className="flex-1 flex flex-col md:items-end gap-4">
-            <div className="text-lg text-foreground font-medium mb-2 text-right">
+          <div className="flex-1 flex flex-col items-center md:items-end gap-4">
+            <div className="text-sm md:text-lg text-foreground font-medium mb-4 md:mb-2 text-center md:text-right leading-relaxed px-2 md:px-0">
               Don’t just take our word for it—hear from people who’ve
               transformed their businesses with our data analytics dashboards,
               AI chatbots, and voice assistants
             </div>
-            <div className="flex gap-2">
-              <Button className="rounded-full px-6 py-2 text-base font-semibold">
+            <div className="flex flex-row gap-2 md:gap-2 w-full md:w-auto justify-center md:justify-end items-center">
+              <Button className="rounded-full px-3 md:px-6 py-2 text-xs md:text-base font-semibold flex-1 md:flex-none max-w-[140px] md:max-w-none">
                 Get Started with AI
               </Button>
               <Button
                 variant="outline"
-                className="rounded-full px-6 py-2 text-base font-semibold"
+                className="rounded-full px-3 md:px-6 py-2 text-xs md:text-base font-semibold flex-1 md:flex-none max-w-[120px] md:max-w-none"
               >
                 Power with AI
               </Button>

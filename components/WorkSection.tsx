@@ -55,6 +55,9 @@ interface Feature {
   subtitle?: string;
   description: string;
   image: string;
+  bullets?: string[];
+  width?: number;
+  height?: number;
 }
 
 // Feature categories
@@ -62,7 +65,7 @@ const features: Record<string, Feature[]> = {
   main: [
     {
       id: "sales_investment",
-  title: "Performance dashboard",
+      title: "Performance dashboard",
       description:
         "Track lead generation, qualification, and revenue contribution with this interactive sales & investment dashboard.",
       image: "/board1.PNG",
@@ -80,7 +83,7 @@ const features: Record<string, Feature[]> = {
       title: "RAG-Powered Chatbot with LangGraph Agents",
       description:
         "Deliver precise, context-aware answers with a Retrieval-Augmented Generation chatbot built on LangGraph agents.",
-      image: "/chat.png",
+      image: "/chat.PNG",
       bullets: [
         "Contextual answers from your documents in real time",
         "LangGraph-powered multi-agent workflows",
@@ -122,7 +125,7 @@ const features: Record<string, Feature[]> = {
     },
     {
       id: "sleep_expert_dashboard_features",
-  title: "Sleep Expert Stats Dashboard",
+      title: "Sleep Expert Stats Dashboard",
       description:
         "Track sales, performance, and merchandising. Monitor employee results, YTD sales, and rankings with clear insights.",
       image: "/board3.png",
@@ -137,7 +140,7 @@ const features: Record<string, Feature[]> = {
     },
     {
       id: "channel_pag_dashboard_features",
-  title: "Channel PAG Dashboard",
+      title: "Channel PAG Dashboard",
       description:
         "Track partner sales, regional attainment, and channel trends. Identify top partners and products driving growth.",
       image: "/board4.png",
@@ -230,16 +233,20 @@ export default function WorkSection() {
     <section
       id="work"
       className="pt-16 pb-28 text-white relative min-h-screen flex items-center"
-      style={{
-        backgroundImage: 'url("/background.png")',
-        backgroundSize: "100% 100%",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundAttachment: "scroll",
-      }}
     >
-      {/* Dark overlay - no blur */}
-      <div className="absolute inset-0 bg-black/60"></div>
+      {/* Background image only on desktop */}
+      <div
+        className="absolute inset-0 hidden md:block"
+        style={{
+          backgroundImage: 'url("/background3.png")',
+          backgroundSize: "100% 100%",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundAttachment: "scroll",
+        }}
+      ></div>
+      {/* Desktop overlay - only show on medium screens and up */}
+      <div className="absolute inset-0 bg-black/60 hidden md:block"></div>
 
       <div className="container mx-auto px-6 max-w-6xl relative z-10">
         {/* Centralized heading and description */}
@@ -253,7 +260,8 @@ export default function WorkSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-9 mt-16">
+        {/* Desktop Layout */}
+        <div className="hidden lg:grid lg:grid-cols-12 gap-9 mt-16">
           {/* Left Column - Feature List */}
           <div className="space-y-3 lg:col-span-6">
             {features.main.map((feature) => (
@@ -402,7 +410,7 @@ export default function WorkSection() {
             </div>
           </div>
 
-          {/* Right Column - Feature Details with Image */}
+          {/* Right Column - Feature Details with Image (Desktop) */}
           <div className="rounded-lg border border-gray-800 bg-gray-900/30 p-5 lg:col-span-6">
             <div className="flex items-center justify-between mb-5">
               <div className="flex items-center">
@@ -615,6 +623,217 @@ export default function WorkSection() {
               </div>
 
               {/* Learn more button removed as requested */}
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Layout - Cards with images */}
+        <div className="lg:hidden mt-16 space-y-6">
+          {/* Regular features */}
+          {features.main.map((feature) => (
+            <div key={feature.id} className="space-y-4">
+              {/* Feature Card */}
+              <div
+                className={cn(
+                  "border border-gray-800 rounded-lg overflow-hidden transition-all duration-300",
+                  expandedFeature === feature.id
+                    ? "bg-gray-900/50"
+                    : "bg-gray-900/20 hover:bg-gray-900/30"
+                )}
+              >
+                <div
+                  className="p-4 flex justify-between items-start cursor-pointer"
+                  onClick={() => toggleExpand(feature.id)}
+                >
+                  <div className="flex items-start gap-4 w-full">
+                    <div className="p-2 bg-gray-800/70 rounded-md mt-0.5">
+                      {getFeatureIcon(feature.id)}
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h3 className="font-medium text-base">
+                          {feature.title}
+                        </h3>
+                      </div>
+                      <p className="text-sm text-gray-400">
+                        {feature.description}
+                      </p>
+
+                      {/* Expanded content with feature bullets */}
+                      {expandedFeature === feature.id && (
+                        <div className="mt-4 ml-1 pt-3 border-t border-gray-800/50">
+                          <ul className="space-y-2 mt-2">
+                            {(
+                              feature.bullets || [
+                                "Real-time reporting and dashboards",
+                                "Custom metrics and KPIs",
+                                "Data visualization tools",
+                                "Export capabilities",
+                                "Predictive analysis",
+                              ]
+                            ).map((bullet, idx) => (
+                              <li key={idx} className="flex items-center gap-2">
+                                <Check className="text-white w-3.5 h-3.5" />
+                                <span className="text-sm text-gray-400">
+                                  {bullet}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  {expandedFeature === feature.id ? (
+                    <ChevronUp className="text-gray-400 w-5 h-5 mt-1.5 ml-3 flex-shrink-0" />
+                  ) : (
+                    <ChevronDown className="text-gray-400 w-5 h-5 mt-1.5 ml-3 flex-shrink-0" />
+                  )}
+                </div>
+              </div>
+
+              {/* Feature Image - Shows right after the card */}
+              {feature.image && (
+                <div className="rounded-lg border border-gray-800 bg-gray-900/30 p-4">
+                  <div className="flex items-center mb-4">
+                    <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center mr-3">
+                      {getFeatureIcon(feature.id)}
+                    </div>
+                    <h4 className="text-lg font-medium">{feature.title}</h4>
+                  </div>
+                  <div className="relative bg-gray-800/50 rounded-lg overflow-hidden flex items-center justify-center">
+                    <Image
+                      src={feature.image}
+                      alt={feature.title}
+                      width={feature.width || 798}
+                      height={feature.height || 400}
+                      className="object-contain object-center opacity-90 w-full"
+                      style={{ maxWidth: "100%", height: "auto" }}
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+
+          {/* AI Receptionist Chatbot */}
+          <div className="space-y-4">
+            {/* AI Receptionist Card */}
+            <div
+              className={cn(
+                "border border-gray-800 rounded-lg overflow-hidden transition-all duration-300 mt-5",
+                expandedFeature === "explore"
+                  ? "bg-gray-900/50"
+                  : "bg-gray-900/20 hover:bg-gray-900/30"
+              )}
+            >
+              <div
+                className="p-4 flex justify-between items-start cursor-pointer"
+                onClick={() => {
+                  if (expandedFeature === "explore") {
+                    setExpandedFeature(null);
+                  } else {
+                    setExpandedFeature("explore");
+                    setSelectedTab("explore");
+                  }
+                }}
+              >
+                <div className="flex items-start gap-4 w-full">
+                  <div className="p-2 bg-gray-800/70 rounded-md mt-0.5">
+                    {/* Diamond AI icon */}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-white"
+                    >
+                      <polygon points="12 2 22 9 12 22 2 9 12 2" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-medium text-base mb-1">
+                      AI Receptionist Chatbot
+                    </h3>
+                    <p className="text-sm text-gray-400">
+                      AI-powered virtual receptionist that engages and qualifies
+                      leads 24/7 while improving customer experience with
+                      instant, personalized responses
+                    </p>
+
+                    {/* Expanded content */}
+                    {expandedFeature === "explore" && (
+                      <div className="mt-4 ml-1 pt-3 border-t border-gray-800/50">
+                        <ul className="space-y-2 mt-2">
+                          {[
+                            "Engage with customers in a natural, human-like conversation",
+                            "Available 7–12 hours daily (configurable for 24/7 support)",
+                            "Automatically request and store customer emails securely in the database",
+                            "Understand customer budgets and match them with suitable company offerings",
+                            "Assist repair inquiries by scheduling calls or escalating to human support",
+                            "Offer consultation for new, repairing, or upgrading services",
+                            "Handle urgent situations like alarms, malfunctions, or escalations in real time",
+                            "Assign customers to the right service plans and escalate to plan handlers if needed",
+                          ].map((bullet, idx) => (
+                            <li key={idx} className="flex items-center gap-2">
+                              <Check className="text-white w-3.5 h-3.5" />
+                              <span className="text-sm text-gray-400">
+                                {bullet}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                {expandedFeature === "explore" ? (
+                  <ChevronUp className="text-gray-400 w-5 h-5 mt-1.5 ml-3 flex-shrink-0" />
+                ) : (
+                  <ChevronDown className="text-gray-400 w-5 h-5 mt-1.5 ml-3 flex-shrink-0" />
+                )}
+              </div>
+            </div>
+
+            {/* AI Receptionist Image */}
+            <div className="rounded-lg border border-gray-800 bg-gray-900/30 p-4">
+              <div className="flex items-center mb-4">
+                <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center mr-3">
+                  {/* Diamond AI icon */}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-white"
+                  >
+                    <polygon points="12 2 22 9 12 22 2 9 12 2" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </div>
+                <h4 className="text-lg font-medium">AI Receptionist Chatbot</h4>
+              </div>
+              <div className="relative bg-gray-800/50 rounded-lg overflow-hidden flex items-center justify-center">
+                <Image
+                  src="/AI receptionist.PNG"
+                  alt="AI Receptionist Chatbot"
+                  width={798}
+                  height={400}
+                  className="object-contain object-center opacity-90 w-full"
+                  style={{ maxWidth: "100%", height: "auto" }}
+                />
+              </div>
             </div>
           </div>
         </div>
