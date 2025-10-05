@@ -41,10 +41,11 @@ export default function HeroSection() {
 
       <main className="overflow-hidden [--color-primary-foreground:var(--color-white)] [--color-primary:var(--color-green-600)]">
         <section
-          className="relative bg-cover bg-center bg-no-repeat min-h-screen md:min-h-[120vh] lg:min-h-[130vh] md:bg-[length:140%_140%] md:bg-bottom"
+          className="relative bg-no-repeat min-h-screen md:min-h-[120vh] lg:min-h-[130vh]"
           style={{ 
             backgroundImage: 'url("/hero.png")',
-            backgroundSize: 'cover'
+            backgroundSize: '120% 120%',
+            backgroundPosition: 'center'
           }}
         >
           {/* Background overlay for better text readability */}
