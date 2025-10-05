@@ -180,7 +180,7 @@ export default function FeaturesSection() {
                   className="size-full overflow-hidden shadow-md"
                 >
                   <Image
-                    src="/herodashboard.png"
+                    src="/d2.png"
                     className="w-full h-auto max-h-[520px] scale-110 object-contain rounded-2xl dark:mix-blend-lighten"
                     alt="Database visualization"
                     width={1207}
