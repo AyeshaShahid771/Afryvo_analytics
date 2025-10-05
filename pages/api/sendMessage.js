@@ -44,10 +44,10 @@ export default async function handler(req, res) {
     html: `
       <div style="max-width:600px;margin:auto;font-family:sans-serif;background:#fff;color:#111;padding:32px;">
         <img src="cid:afryvo-logo" alt="Afryvo Analytics Logo" style="height:48px;margin-bottom:24px;display:block;margin-left:auto;margin-right:auto;" />
-        <h2 style="font-size:22px;font-weight:600;margin-bottom:16px;">Thank you for reaching out</h2>
-        <p style="font-size:16px;">Hi ${name},</p>
-        <p style="font-size:16px;">Thank you for contacting Afryvo Analytics.<br />Our team has received your message and will get back to you shortly.</p>
-        <p style="font-size:16px;margin-top:32px;">Best regards,<br />Afryvo Analytics Team</p>
+        <h2 style="font-size:22px;font-weight:600;margin-bottom:16px;color:#111;">Thank you for reaching out</h2>
+        <p style="font-size:16px;color:#111;">Hi ${name},</p>
+        <p style="font-size:16px;color:#111;">Thank you for contacting Afryvo Analytics.<br />Our team has received your message and will get back to you shortly.</p>
+        <p style="font-size:16px;margin-top:32px;color:#111;">Best regards,<br />Afryvo Analytics Team</p>
       </div>
     `,
     attachments: [
