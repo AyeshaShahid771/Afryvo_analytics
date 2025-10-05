@@ -80,7 +80,7 @@ const features: Record<string, Feature[]> = {
       title: "RAG-Powered Chatbot with LangGraph Agents",
       description:
         "Deliver precise, context-aware answers with a Retrieval-Augmented Generation chatbot built on LangGraph agents.",
-      image: "/chat.png",
+      image: "/chat.PNG",
       bullets: [
         "Contextual answers from your documents in real time",
         "LangGraph-powered multi-agent workflows",
