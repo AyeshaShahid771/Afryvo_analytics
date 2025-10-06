@@ -8,7 +8,7 @@ const teamMembers = [
   },
   {
     name: "Ahmad Hassan Afridi, Ph.D",
-    role: "Founding Member(AI Researcher)",
+    role: "Founding Member\n(AI Researcher)",
     image: "/member2.png",
   },
   {
