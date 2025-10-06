@@ -27,8 +27,8 @@ export const LogoCloud = () => {
           </p>
         </div>
 
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl text-white mb-10">
+        <div className="text-center mb-8 md:mb-16">
+          <h2 className="text-4xl md:text-5xl text-white mb-6 md:mb-10">
             Served hundreds of companies
             <br />
             worldwide
