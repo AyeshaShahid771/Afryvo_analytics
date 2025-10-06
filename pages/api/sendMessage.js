@@ -52,8 +52,8 @@ export default async function handler(req, res) {
     `,
     attachments: [
       {
-        filename: "afryvoanalytics.png",
-        path: path.join(process.cwd(), "public", "afryvoanalytics.png"),
+        filename: "new_black_logo.png",
+        path: "c:\\Users\\Ayesha Shahid\\Downloads\\new_black_logo.png",
         cid: "afryvo-logo",
       },
     ],
