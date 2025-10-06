@@ -170,24 +170,15 @@ export default function FeaturesSection() {
 
           <div className="relative flex overflow-hidden p-1 sm:p-2 w-full">
             <div className="relative w-full mb-0 max-h-[300px] sm:max-h-[400px] md:max-h-[520px]">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={`${activeItem}-id`}
-                  initial={{ opacity: 0, y: 6, scale: 0.98 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 6, scale: 0.98 }}
-                  transition={{ duration: 0.2 }}
-                  className="size-full overflow-hidden shadow-md"
-                >
-                  <Image
-                    src="/d3.png"
-                    className="w-full h-auto max-h-[300px] sm:max-h-[400px] md:max-h-[520px] scale-105 sm:scale-110 object-contain rounded-lg sm:rounded-2xl dark:mix-blend-lighten"
-                    alt="Database visualization"
-                    width={1207}
-                    height={929}
-                  />
-                </motion.div>
-              </AnimatePresence>
+              <div className="size-full overflow-hidden shadow-md">
+                <Image
+                  src="/d3.png"
+                  className="w-full h-auto max-h-[300px] sm:max-h-[400px] md:max-h-[520px] scale-105 sm:scale-110 object-contain rounded-lg sm:rounded-2xl dark:mix-blend-lighten"
+                  alt="Database visualization"
+                  width={1207}
+                  height={929}
+                />
+              </div>
             </div>
             {/* BorderBeam removed for clean background */}
           </div>
