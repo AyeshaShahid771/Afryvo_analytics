@@ -36,7 +36,7 @@ export default function Footer() {
         {/* Left: Logo and description */}
         <div className="flex flex-col items-center md:items-start gap-4">
           <Image
-            src="/logo.png"
+            src="/new_logo.png"
             alt="Afryvo Analytics Logo"
             width={120}
             height={120}

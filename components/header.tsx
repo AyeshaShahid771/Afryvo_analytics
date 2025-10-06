@@ -42,7 +42,7 @@ export const HeroHeader = () => {
             <div className="flex w-full justify-between lg:w-auto">
               <Link href="/" aria-label="home" className="flex items-center">
                 <img
-                  src="/logo.png"
+                  src="/new_logo.png"
                   alt="Logo"
                   className="h-12 max-h-12 w-auto object-contain overflow-visible"
                 />
