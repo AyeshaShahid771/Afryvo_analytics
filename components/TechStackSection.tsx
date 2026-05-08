@@ -1,15 +1,17 @@
 import React from "react";
 import { 
   SiPython, SiTypescript, SiJavascript, 
-  SiNextdotjs, SiReact, SiTailwindcss, SiAstro,
-  SiFastapi, SiNodedotjs, SiHono,
-  SiVercel, SiPydantic, SiPytorch,
-  SiPostgresql, SiMongodb, SiUpstash, SiPrisma,
-  SiAmazonwebservices, SiDocker, SiTerraform, SiSentry, SiGithubactions, SiGooglecloud
+  SiNextdotjs, SiReact, SiTailwindcss,
+  SiFastapi, SiNodedotjs,
+  SiPytorch,
+  SiPostgresql, SiMongodb, SiPrisma,
+  SiAmazonwebservices, SiDocker, SiTerraform, SiGithubactions, SiGooglecloud,
+  SiDigitalocean, SiHeroku, SiNetlify,
+  SiTableau, SiApachespark, SiSnowflake, SiKubernetes
 } from "react-icons/si";
-import { FaJava } from "react-icons/fa6";
+import { FaJava, FaMicrosoft, FaChartBar, FaDatabase } from "react-icons/fa6";
 import { TbBrandCSharp } from "react-icons/tb";
-import { Zap, Network } from "lucide-react";
+import { BarChart3, Database } from "lucide-react";
 
 const technologies = [
   // Languages
@@ -36,10 +38,24 @@ const technologies = [
   { name: "MongoDB", icon: SiMongodb },
   { name: "Prisma", icon: SiPrisma },
   
-  // DevOps
+  // Data Analytics
+  { name: "Power BI", icon: BarChart3 },
+  { name: "Tableau", icon: SiTableau },
+  { name: "Apache Spark", icon: SiApachespark },
+  { name: "Databricks", icon: Database },
+  { name: "Snowflake", icon: SiSnowflake },
+  
+  // Cloud & Deployment
   { name: "AWS", icon: SiAmazonwebservices },
+  { name: "Azure", icon: FaMicrosoft },
   { name: "GCP", icon: SiGooglecloud },
+  { name: "DigitalOcean", icon: SiDigitalocean },
+  { name: "Heroku", icon: SiHeroku },
+  { name: "Netlify", icon: SiNetlify },
+  
+  // DevOps
   { name: "Docker", icon: SiDocker },
+  { name: "Kubernetes", icon: SiKubernetes },
   { name: "Terraform", icon: SiTerraform },
   { name: "GitHub Actions", icon: SiGithubactions },
 ];
