@@ -1,0 +1,8 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "next build --turbopack",
+  "installCommand": "pnpm install --no-frozen-lockfile",
+  "env": {
+    "NEXT_IGNORE_VULNERABILITY_CHECK": "1"
+  }
+}
