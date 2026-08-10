@@ -27,7 +27,7 @@ const testimonials: Testimonial[] = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-16 px-4">
+    <section id="testimonials" className="py-16 px-4 bg-black">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-12 gap-6">
           <div className="text-center md:text-left">

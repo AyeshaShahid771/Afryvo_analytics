@@ -1,843 +1,469 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+import { useState } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import {
-  ChevronDown,
-  ChevronUp,
-  Check,
-  Settings,
-  BarChart,
-  Shield,
-  Clock,
-  Users,
-  Brain,
-  Code,
+  BarChart3,
   Bot,
+  Brain,
+  Check,
+  ExternalLink,
+  Layers,
+  Sparkles,
   Trophy,
   TrendingUp,
+  X,
+  Zap,
 } from "lucide-react";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 
-/**
- * NOTE: To add 3D models using Spline:
- * 1. Install Spline: npm install @splinetool/react-spline
- * 2. Add these imports:
- *    import dynamic from "next/dynamic";
- *    import { Suspense } from "react";
- *
- * 3. Add this code before the component:
- *    const Spline = dynamic(() => import('@splinetool/react-spline'), {
- *      ssr: false,
- *      loading: () => <div className="flex items-center justify-center h-[400px]">
- *                      <p className="text-gray-500">Loading 3D model...</p>
- *                     </div>
- *    });
- *
- * 4. Replace the placeholder div with:
- *    <div className="w-full h-[400px] relative overflow-visible">
- *      <Suspense fallback={<div className="flex items-center justify-center h-full">
- *                           <p className="text-gray-500">Loading animation...</p>
- *                          </div>}>
- *        <Spline scene="YOUR_SPLINE_URL_HERE" />
- *      </Suspense>
- *    </div>
- */
-
-// Feature types
-interface Feature {
+interface Project {
   id: string;
+  number: string;
   title: string;
-  subtitle?: string;
+  category: string;
+  urlLabel: string;
   description: string;
   image: string;
-  bullets?: string[];
-  width?: number;
-  height?: number;
+  tags: string[];
+  bullets: string[];
+  icon: any;
 }
 
-// Feature categories
-const features: Record<string, Feature[]> = {
-  main: [
-    {
-      id: "sales_investment",
-      title: "Performance dashboard",
-      description:
-        "Track lead generation, qualification, and revenue contribution with this interactive sales & investment dashboard.",
-      image: "/board1.PNG",
-      bullets: [
-        "Monitor Customer, Partner, Prospect, and Referral Partner lifetime value and lead count",
-        "Track monthly lead progression by qualification status (Qualified, Not Qualified, Others)",
-        "Visualize overall lead distribution with real-time donut segmentation",
-        "Rank campaigns such as Organic Website, Walk-in Digital, Referrals, and Social Media by lead performance",
-        "Identify top owners by Leads, Lifetime Value, and % Conversion to evaluate sales contribution",
-        "Support data-driven decision making with insights on qualified vs. unqualified leads",
-      ],
-    },
-    {
-      id: "rag-chatbot",
-      title: "RAG-Powered Chatbot with LangGraph Agents",
-      description:
-        "Deliver precise, context-aware answers with a Retrieval-Augmented Generation chatbot built on LangGraph agents.",
-      image: "/chat.PNG",
-      bullets: [
-        "Contextual answers from your documents in real time",
-        "LangGraph-powered multi-agent workflows",
-        "Dynamic tool use for retrieval, reasoning, and actions",
-        "Run SQL queries directly on your database",
-        "Send emails automatically from chat",
-        "Book meetings on your calendar",
-      ],
-    },
-    {
-      id: "ai_fitness_plan",
-      title: "AI Voice Fitness & Diet Plan Generator",
-      description:
-        "Personalized AI-powered fitness and diet plans tailored to your unique profile. Voice-interactive routines generated instantly for faster results.",
-      image: "/fit.png",
-      bullets: [
-        "Voice-powered AI fitness assistant with LangChain integration",
-        "Personalized plans based on weight, height, and body composition",
-        "Custom diet and exercise recommendations considering allergies & medical issues",
-        "Flexible programs designed around your available workout days per week",
-        "Balanced meal and exercise schedules optimized for long-term results",
-        "AI-driven insights and real-time adjustments for faster transformation",
-      ],
-    },
-    {
-      id: "fts_scorecard",
-      title: "FTS Performance Scorecard Dashboard",
-      description:
-        "Track FTS performance, rankings, and sales across regions with this real-time scorecard dashboard.",
-      image: "/board2.PNG",
-      bullets: [
-        "Highlight top 3 performers with rank, percentage, and finalized sales value",
-        "Track new hire finalized PIB and 6-month average finalized sales by region",
-        "Measure sales efficiency with sales-per-hour insights",
-        "Compare regional performance across North Florida, Keystone, Midwest, Pacific, and more",
-        "Visualize year-over-year growth in finalized sales",
-        "Enable leadership to monitor and improve field training impact with data-driven insights",
-      ],
-    },
-    {
-      id: "sleep_expert_dashboard_features",
-      title: "Sleep Expert Stats Dashboard",
-      description:
-        "Track sales, performance, and merchandising. Monitor employee results, YTD sales, and rankings with clear insights.",
-      image: "/board3.png",
-      bullets: [
-        "Monitor finalized sales, YOY growth, gross margin, and sales per ticket in real time",
-        "Track individual employee performance with district, regional, and division rankings",
-        "Visualize YTD sales trends with color-coded growth and comparison charts",
-        "Analyze merchandising mix across luxury, premium, promo, and value categories",
-        "Evaluate vendor contributions from Simmons, Serta, Tempur, Sealy, and more",
-        "Measure attach rates, step-ups, add-ons, and finance metrics for deeper insights",
-      ],
-    },
-    {
-      id: "channel_pag_dashboard_features",
-      title: "Channel PAG Dashboard",
-      description:
-        "Track partner sales, regional attainment, and channel trends. Identify top partners and products driving growth.",
-      image: "/board4.png",
-      bullets: [
-        "Monitor current year and quarterly attainment across Global, AMER, EMEA, and APAC regions",
-        "Visualize sales attainment with dynamic gauges and trend comparisons",
-        "Analyze channel sales motions including agencies, resellers, and hyperscale partners",
-        "Compare channel vs non-channel revenue contributions across quarters",
-        "Break down deal sizes with detailed deal bucket insights (<$10K, $10K–$1M+)",
-        "Identify top 10 partners and top 10 products driving revenue growth",
-      ],
-    },
-  ],
-  // customization removed
-};
+const projects: Project[] = [
+  {
+    id: "sales_investment",
+    number: "01",
+    title: "Executive Performance & Revenue Dashboard",
+    category: "SALES & EXECUTIVE BI",
+    urlLabel: "afryvo.ai/analytics/executive-sales",
+    description:
+      "Interactive sales & investment dashboard delivering real-time lead qualification, campaign ROI analytics, and lifetime value distribution across customer segments.",
+    image: "/board1.PNG",
+    tags: ["PIPELINE ANALYTICS", "LTV TRACKING", "CAMPAIGN ROI", "DONUT SEGMENTATION"],
+    bullets: [
+      "Track Customer, Partner, Prospect & Referral Partner lifetime value",
+      "Monitor monthly lead progression by qualification status (Qualified vs. Unqualified)",
+      "Real-time donut segmentation & multi-channel campaign rankings",
+      "Top owner leaderboards ranked by Leads, LTV, and % Conversion rates",
+    ],
+    icon: BarChart3,
+  },
+  {
+    id: "rag-chatbot",
+    number: "02",
+    title: "LangGraph Multi-Agent RAG & SQL Chatbot",
+    category: "AUTONOMOUS AI AGENTS",
+    urlLabel: "afryvo.ai/agents/langgraph-rag",
+    description:
+      "Enterprise Retrieval-Augmented Generation system powered by LangGraph agents capable of live database queries, document reasoning, and automated email dispatch.",
+    image: "/chat.PNG",
+    tags: ["LANGGRAPH AGENTS", "VECTOR SEARCH RAG", "LIVE SQL QUERIES", "CALENDAR SYNC"],
+    bullets: [
+      "Real-time contextual document retrieval via semantic vector search",
+      "Multi-agent reasoning with dynamic tool orchestration for complex queries",
+      "Direct SQL query execution on live enterprise database systems",
+      "Automated email dispatch & meeting calendar scheduling directly from chat",
+    ],
+    icon: Brain,
+  },
+  {
+    id: "ai_receptionist",
+    number: "03",
+    title: "24/7 AI Virtual Receptionist Chatbot",
+    category: "AI VIRTUAL RECEPTIONIST",
+    urlLabel: "afryvo.ai/agents/virtual-receptionist",
+    description:
+      "AI virtual receptionist that engages, qualifies, and logs customer leads 24/7 while matching budgets to service packages and escalating urgent inquiries.",
+    image: "/AI receptionist.PNG",
+    tags: ["24/7 LEAD QUALIFICATION", "NATURAL LANGUAGE AI", "BUDGET MATCHING", "URGENT ESCALATIONS"],
+    bullets: [
+      "Natural, human-like conversations available 24 hours a day",
+      "Automated email capture & secure database logging",
+      "Customer budget qualification & service plan matching",
+      "Real-time escalation handling for emergency support calls",
+    ],
+    icon: Bot,
+  },
+  {
+    id: "ai_fitness_plan",
+    number: "04",
+    title: "Voice AI Fitness & Routine Generator",
+    category: "VOICE AI & HEALTH",
+    urlLabel: "afryvo.ai/voice/fitness-routine-ai",
+    description:
+      "Voice-interactive AI health assistant leveraging LangChain to generate personalized fitness and nutritional routines based on medical profiles and weekly goals.",
+    image: "/fit.png",
+    tags: ["VOICE ASSISTANT AI", "LANGCHAIN FRAMEWORK", "PERSONALIZED NUTRITION", "DYNAMIC WORKOUTS"],
+    bullets: [
+      "Voice-activated fitness assistant with instant plan generation",
+      "Personalized macro & calorie recommendations considering medical history",
+      "Custom workout schedules based on available days per week",
+      "Real-time routine adjustments and progress analytics",
+    ],
+    icon: Zap,
+  },
+  {
+    id: "fts_scorecard",
+    number: "05",
+    title: "Field Specialist Performance Scorecard",
+    category: "REGIONAL SCORECARDS",
+    urlLabel: "afryvo.ai/analytics/fts-scorecard",
+    description:
+      "Real-time scorecard tracking field training specialist rankings, finalized sales values, sales-per-hour metrics, and regional YOY growth.",
+    image: "/board2.PNG",
+    tags: ["SPECIALIST LEADERBOARDS", "REGIONAL ATTAINMENT", "PIB METRICS", "YOY GROWTH"],
+    bullets: [
+      "Top-3 performer highlights with rank & finalized sales value",
+      "New hire finalized PIB & 6-month average sales trends",
+      "Sales-per-hour efficiency benchmarks across North Florida, Keystone & Pacific",
+      "Year-over-year finalized sales growth tracking",
+    ],
+    icon: Trophy,
+  },
+  {
+    id: "sleep_expert_dashboard",
+    number: "06",
+    title: "Retail Merchandising & Store Performance",
+    category: "RETAIL OPERATIONS",
+    urlLabel: "afryvo.ai/analytics/retail-store-stats",
+    description:
+      "Enterprise retail analytics suite tracking employee performance rankings, district/division metrics, gross margins, and vendor merchandise mix.",
+    image: "/board3.png",
+    tags: ["DISTRICT LEADERBOARDS", "MERCHANDISE MIX", "AOV & ATTACH RATES", "VENDOR ANALYTICS"],
+    bullets: [
+      "Real-time tracking of finalized sales, gross margins, and YOY growth",
+      "District, regional, and division-level employee rankings",
+      "Merchandise mix analysis across Luxury, Premium, and Value categories",
+      "Attach rates, step-ups, add-ons, and finance metric insights",
+    ],
+    icon: Layers,
+  },
+  {
+    id: "channel_pag_dashboard",
+    number: "07",
+    title: "Global Channel PAG Revenue & Attainment",
+    category: "GLOBAL CHANNEL SALES",
+    urlLabel: "afryvo.ai/analytics/channel-pag-global",
+    description:
+      "Global channel sales dashboard monitoring quarterly attainment across AMER, EMEA, and APAC regions with deal size bucket breakdowns.",
+    image: "/board4.png",
+    tags: ["GLOBAL ATTAINMENT", "RESELLER ANALYTICS", "DEAL SIZE BUCKETS", "PARTNER LEADERBOARDS"],
+    bullets: [
+      "AMER, EMEA, and APAC sales attainment monitoring with dynamic gauges",
+      "Channel vs non-channel revenue comparisons across quarters",
+      "Deal size bucket breakdowns (<$10K, $10K–$1M+)",
+      "Top 10 partners & products driving quarterly growth",
+    ],
+    icon: TrendingUp,
+  },
+];
 
-// Helper function to get icon for feature
-const getFeatureIcon = (id: string) => {
-  switch (id) {
-    case "audit_reporting":
-      return <Shield className="w-5 h-5 text-white" />;
-    case "analytics":
-      return <BarChart className="w-5 h-5 text-white" />;
-    case "sales_investment":
-      return <BarChart className="w-5 h-5 text-white" />;
-    case "fts_scorecard":
-      return <Trophy className="w-5 h-5 text-white" />;
-    case "sleep_expert_dashboard_features":
-      // User-check icon for Sleep Expert Stats Dashboard (employee performance)
-      return (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-5 h-5 text-white"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
-          <circle cx="9" cy="7" r="4" />
-          <path d="M17 11v2a4 4 0 0 1-4 4H5a4 4 0 0 1-4-4v-2" />
-          <polyline points="16 19 18 21 22 17" />
-        </svg>
-      );
-    case "channel_pag_dashboard_features":
-      // Trending-up icon for Channel PAG Dashboard
-      return <TrendingUp className="w-5 h-5 text-white" />;
-    case "security":
-      return <Shield className="w-5 h-5 text-white" />;
-    case "automation":
-      return <Clock className="w-5 h-5 text-white" />;
-    case "ai_fitness_plan":
-      return <Bot className="w-5 h-5 text-white" />;
-    case "collaboration":
-      return <Users className="w-5 h-5 text-white" />;
-    case "ai":
-      return <Brain className="w-5 h-5 text-white" />;
-    case "api":
-      return <Code className="w-5 h-5 text-white" />;
-    case "rag-chatbot":
-      return <Brain className="w-5 h-5 text-white" />;
-    default:
-      return <Settings className="w-5 h-5 text-white" />;
-  }
-};
+interface UnfoldProjectCardProps {
+  project: Project;
+  idx: number;
+  totalProjects: number;
+  onOpenModal: (p: Project) => void;
+}
 
-export default function WorkSection() {
-  // Set default to first feature in main array
-  const firstFeatureId = features.main[0]?.id || "";
-  const [selectedTab, setSelectedTab] = useState(firstFeatureId);
-  const [expandedFeature, setExpandedFeature] = useState<string | null>(
-    firstFeatureId
-  );
+function UnfoldProjectCard({
+  project,
+  idx,
+  totalProjects,
+  onOpenModal,
+}: UnfoldProjectCardProps) {
+  const shouldReduceMotion = useReducedMotion();
+  const Icon = project.icon;
 
-  // Find the currently selected feature
-  const selectedFeature = features.main.find(
-    (feature) => feature.id === selectedTab
-  );
+  const cardVariants = {
+    hidden: shouldReduceMotion
+      ? { opacity: 0, y: 15 }
+      : {
+          opacity: 0.25,
+          rotateX: 12,
+          rotateY: -2,
+          translateY: 20,
+          translateZ: -25,
+          scale: 0.95,
+          filter: "brightness(0.8)",
+        },
+    visible: {
+      opacity: 1,
+      rotateX: 0,
+      rotateY: 0,
+      translateY: 0,
+      translateZ: 0,
+      scale: 1,
+      filter: "brightness(1)",
+      transition: {
+        type: "spring",
+        stiffness: 110,
+        damping: 14,
+        mass: 0.5,
+        staggerChildren: 0.05,
+        delayChildren: 0.02,
+      },
+    },
+  };
 
-  // Toggle expanded state for a feature
-  const toggleExpand = (featureId: string) => {
-    if (expandedFeature === featureId) {
-      setExpandedFeature(null);
-    } else {
-      setExpandedFeature(featureId);
-      setSelectedTab(featureId);
-    }
+  const imageVariants = {
+    hidden: shouldReduceMotion
+      ? { opacity: 0 }
+      : { opacity: 0, scale: 0.97, y: 10 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 120,
+        damping: 14,
+      },
+    },
+  };
+
+  const contentVariants = {
+    hidden: shouldReduceMotion
+      ? { opacity: 0 }
+      : { opacity: 0, x: 10, y: 8 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 115,
+        damping: 14,
+      },
+    },
+  };
+
+  const footerVariants = {
+    hidden: { opacity: 0, y: 4 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.2, delay: 0.08 },
+    },
   };
 
   return (
-    <section
-      id="work"
-      className="pt-16 pb-28 text-white relative min-h-screen flex items-center"
-    >
-      {/* Background image only on desktop */}
-      <div
-        className="absolute inset-0 hidden md:block"
-        style={{
-          backgroundImage: 'url("/background3.png")',
-          backgroundSize: "100% 100%",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundAttachment: "scroll",
-        }}
-      ></div>
-      {/* Desktop overlay - only show on medium screens and up */}
-      <div className="absolute inset-0 bg-black/60 hidden md:block"></div>
+    <div className="perspective-[800px] sm:perspective-[1200px] overflow-x-clip py-2 sm:py-6 relative group/card-wrapper">
+      {/* Smoky Ambient Lighting Backdrop */}
+      <div className="absolute inset-0 sm:inset-4 rounded-2xl sm:rounded-[2.5rem] bg-gradient-to-b from-white/[0.07] via-zinc-500/[0.03] to-transparent blur-xl sm:blur-2xl opacity-65 group-hover/card-wrapper:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-      <div className="container mx-auto px-6 max-w-6xl relative z-10">
-        {/* Centralized heading and description */}
-        <div className="mb-24 text-center mx-auto max-w-3xl">
-          <h2 className="text-4xl font-bold mb-4 text-gray-100">
-            Glance at Our Work
-          </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Discover the impactful projects and collaborations that showcase our
-            expertise and creativity.
-          </p>
-        </div>
-
-        {/* Desktop Layout */}
-        <div className="hidden lg:grid lg:grid-cols-12 gap-9 mt-16">
-          {/* Left Column - Feature List */}
-          <div className="space-y-3 lg:col-span-6">
-            {features.main.map((feature) => (
-              <div
-                key={feature.id}
-                className={cn(
-                  "border border-gray-800 rounded-lg overflow-hidden transition-all duration-300",
-                  expandedFeature === feature.id
-                    ? "bg-gray-900/50"
-                    : "bg-gray-900/20 hover:bg-gray-900/30"
-                )}
-              >
-                <div
-                  className="p-4 flex justify-between items-start cursor-pointer"
-                  onClick={() => toggleExpand(feature.id)}
-                >
-                  <div className="flex items-start gap-4 w-full">
-                    <div className="p-2 bg-gray-800/70 rounded-md mt-0.5">
-                      {getFeatureIcon(feature.id)}
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h3 className="font-medium text-base">
-                          {feature.title}
-                        </h3>
-                      </div>
-                      <p className="text-sm text-gray-400">
-                        {feature.description}
-                      </p>
-
-                      {/* Expanded content with feature bullets */}
-                      {expandedFeature === feature.id && (
-                        <div className="mt-4 ml-1 pt-3 border-t border-gray-800/50">
-                          <ul className="space-y-2 mt-2">
-                            {(
-                              feature.bullets || [
-                                "Real-time reporting and dashboards",
-                                "Custom metrics and KPIs",
-                                "Data visualization tools",
-                                "Export capabilities",
-                                "Predictive analysis",
-                              ]
-                            ).map((bullet, idx) => (
-                              <li key={idx} className="flex items-center gap-2">
-                                <Check className="text-white w-3.5 h-3.5" />
-                                <span className="text-sm text-gray-400">
-                                  {bullet}
-                                </span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                  {expandedFeature === feature.id ? (
-                    <ChevronUp className="text-gray-400 w-5 h-5 mt-1.5 ml-3 flex-shrink-0" />
-                  ) : (
-                    <ChevronDown className="text-gray-400 w-5 h-5 mt-1.5 ml-3 flex-shrink-0" />
-                  )}
-                </div>
-              </div>
-            ))}
-
-            {/* "Explore all features" dropdown */}
+      <motion.div
+        variants={cardVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.01 }}
+        className={cn(
+          "relative transform-gpu bg-[#0d0d11]/95 border border-white/[0.1] hover:border-white/[0.22] rounded-xl sm:rounded-3xl p-3 sm:p-9 lg:p-12 shadow-[0_20px_70px_-15px_rgba(0,0,0,0.95),0_0_40px_rgba(255,255,255,0.03)] hover:shadow-[0_30px_100px_-10px_rgba(0,0,0,0.98),0_0_70px_rgba(255,255,255,0.07)] backdrop-blur-2xl transition-all duration-500 group"
+        )}
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-8 lg:gap-14 items-center">
+          {/* Left Column: Image Preview (7 cols) */}
+          <motion.div variants={imageVariants} className="lg:col-span-7 space-y-3 sm:space-y-4">
             <div
-              className={cn(
-                "border border-gray-800 rounded-lg overflow-hidden transition-all duration-300 mt-5",
-                expandedFeature === "explore"
-                  ? "bg-gray-900/50"
-                  : "bg-gray-900/20 hover:bg-gray-900/30"
-              )}
-            >
-              <div
-                className="p-4 flex justify-between items-start cursor-pointer"
-                onClick={() => {
-                  if (expandedFeature === "explore") {
-                    setExpandedFeature(null);
-                  } else {
-                    setExpandedFeature("explore");
-                    setSelectedTab("explore");
-                  }
-                }}
-              >
-                <div className="flex items-start gap-4 w-full">
-                  <div className="p-2 bg-gray-800/70 rounded-md mt-0.5">
-                    {/* Diamond AI icon */}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-white"
-                    >
-                      <polygon points="12 2 22 9 12 22 2 9 12 2" />
-                      <circle cx="12" cy="12" r="3" />
-                    </svg>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-medium text-base mb-1">
-                      AI Receptionist Chatbot
-                    </h3>
-                    <p className="text-sm text-gray-400">
-                      AI-powered virtual receptionist that engages and qualifies
-                      leads 24/7 while improving customer experience with
-                      instant, personalized responses
-                    </p>
-
-                    {/* Expanded content */}
-                    {expandedFeature === "explore" && (
-                      <div className="mt-4 ml-1 pt-3 border-t border-gray-800/50">
-                        <ul className="space-y-2 mt-2">
-                          {[
-                            "Engage with customers in a natural, human-like conversation",
-                            "Available 7–12 hours daily (configurable for 24/7 support)",
-                            "Automatically request and store customer emails securely in the database",
-                            "Understand customer budgets and match them with suitable company offerings",
-                            "Assist repair inquiries by scheduling calls or escalating to human support",
-                            "Offer consultation for new, repairing, or upgrading services",
-                            "Handle urgent situations like alarms, malfunctions, or escalations in real time",
-                            "Assign customers to the right service plans and escalate to plan handlers if needed",
-                          ].map((bullet, idx) => (
-                            <li key={idx} className="flex items-center gap-2">
-                              <Check className="text-white w-3.5 h-3.5" />
-                              <span className="text-sm text-gray-400">
-                                {bullet}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                </div>
-                {expandedFeature === "explore" ? (
-                  <ChevronUp className="text-gray-400 w-5 h-5 mt-1.5 ml-3 flex-shrink-0" />
-                ) : (
-                  <ChevronDown className="text-gray-400 w-5 h-5 mt-1.5 ml-3 flex-shrink-0" />
-                )}
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column - Feature Details with Image (Desktop) */}
-          <div className="rounded-lg border border-gray-800 bg-gray-900/30 p-5 lg:col-span-6">
-            <div className="flex items-center justify-between mb-5">
-              <div className="flex items-center">
-                {selectedTab === "explore" ? (
-                  <>
-                    <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center mr-3">
-                      {/* Diamond AI icon */}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-white"
-                      >
-                        <polygon points="12 2 22 9 12 22 2 9 12 2" />
-                        <circle cx="12" cy="12" r="3" />
-                      </svg>
-                    </div>
-                    <h3 className="text-xl font-medium">
-                      AI Receptionist Chatbot
-                    </h3>
-                  </>
-                ) : (
-                  selectedFeature && (
-                    <>
-                      <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center mr-3">
-                        {getFeatureIcon(selectedFeature.id)}
-                      </div>
-                      <h3 className="text-xl font-medium">
-                        {selectedFeature.title}
-                      </h3>
-                    </>
-                  )
-                )}
-                {/* No fallback for Advanced Customization or empty state */}
-              </div>
-              {/* Removed Popular badge */}
-            </div>
-
-            <div
-              className="relative bg-gray-800/50 rounded-lg overflow-hidden flex items-center justify-center min-w-0 min-h-0"
-              style={{ width: "auto", height: "auto" }}
+              onClick={() => onOpenModal(project)}
+              className="relative aspect-[16/9] sm:aspect-[16/10] w-full rounded-lg sm:rounded-2xl overflow-hidden bg-black border border-white/[0.08] shadow-2xl group/img cursor-pointer"
             >
               <Image
-                src={
-                  selectedTab === "explore"
-                    ? "/AI receptionist.PNG"
-                    : selectedFeature?.image || ""
-                }
-                alt={selectedFeature?.title || "Feature Image"}
-                width={selectedFeature?.width || 798}
-                height={selectedFeature?.height || 400}
-                className="object-contain object-center opacity-90"
-                style={{ maxWidth: "100%", height: "100%" }}
+                src={project.image}
+                alt={project.title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 60vw"
+                className="object-cover sm:object-contain object-center opacity-95 contrast-[1.02] group-hover/img:opacity-100 group-hover/img:brightness-[1.04] transition-all duration-500"
               />
-            </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover/img:opacity-30 transition-opacity duration-500" />
 
-            <p className="text-gray-400 mb-4 text-sm">
-              {selectedTab === "explore"
-                ? "AI-powered virtual receptionist that engages and qualifies leads 24/7 while improving customer experience with instant, personalized responses"
-                : selectedFeature?.description ||
-                  "Tailor the platform to your specific needs with extensive customization options."}
-            </p>
-
-            <div className="mt-5 space-y-3">
-              <h4 className="font-medium mb-3 text-sm">
-                {selectedTab === "explore"
-                  ? "AI Receptionist Chatbot Features:"
-                  : selectedFeature?.title
-                  ? `${selectedFeature.title} Features:`
-                  : "Available Features:"}
-              </h4>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {selectedTab === "explore"
-                  ? [
-                      "Engage with customers in a natural, human-like conversation",
-                      "Available 7–12 hours daily (configurable for 24/7 support)",
-                      "Automatically request and store customer emails securely in the database",
-                      "Understand customer budgets and match them with suitable company offerings",
-                      "Assist repair inquiries by scheduling calls or escalating to human support",
-                      "Offer consultation for new, repairing, or upgrading services",
-                      "Handle urgent situations like alarms, malfunctions, or escalations in real time",
-                      "Assign customers to the right service plans and escalate to plan handlers if needed",
-                    ].map((bullet, idx) => (
-                      <div key={idx} className="flex items-center gap-2">
-                        <Check className="text-white w-3.5 h-3.5 flex-shrink-0" />
-                        <span className="text-xs text-gray-300">{bullet}</span>
-                      </div>
-                    ))
-                  : selectedFeature?.id === "sales_investment"
-                  ? [
-                      "Customer, Partner, Prospect, and Referral Partner performance tracking",
-                      "Lifetime value and lead count monitoring by segment",
-                      "Real-time lead qualification insights (Qualified, Not Qualified, Others)",
-                      "Campaign performance ranking across digital and referral channels",
-                      "Top owners ranked by Leads, Lifetime Value, and % Conversion",
-                      "Interactive visualizations to analyze sales pipeline and conversion health",
-                    ].map((bullet, idx) => (
-                      <div key={idx} className="flex items-center gap-2">
-                        <Check className="text-white w-3.5 h-3.5 flex-shrink-0" />
-                        <span className="text-xs text-gray-300">{bullet}</span>
-                      </div>
-                    ))
-                  : selectedFeature?.id === "fts_scorecard"
-                  ? [
-                      "Real-time ranking of top-performing field training specialists",
-                      "Track finalized sales and performance percentages by region",
-                      "Compare new hire performance with 6-month average sales trends",
-                      "Measure sales efficiency with sales-per-hour insights",
-                      "Highlight year-over-year growth in finalized sales",
-                      "Access detailed leaderboards for regional and individual performance",
-                    ].map((bullet, idx) => (
-                      <div key={idx} className="flex items-center gap-2">
-                        <Check className="text-white w-3.5 h-3.5 flex-shrink-0" />
-                        <span className="text-xs text-gray-300">{bullet}</span>
-                      </div>
-                    ))
-                  : selectedFeature?.id === "sleep_expert_dashboard_features"
-                  ? [
-                      "Real-time tracking of finalized sales, YOY growth, and gross margins",
-                      "District, regional, and division-level ranking for employee performance",
-                      "Interactive YTD sales visualization with growth and comparison charts",
-                      "Detailed sales metrics including tickets, AOV, and returns analysis",
-                      "Merchandising insights across luxury, premium, promo, and vendor mix",
-                      "Add-on tracking with attach rates, step-ups, and finance metrics",
-                    ].map((bullet, idx) => (
-                      <div key={idx} className="flex items-center gap-2">
-                        <Check className="text-white w-3.5 h-3.5 flex-shrink-0" />
-                        <span className="text-xs text-gray-300">{bullet}</span>
-                      </div>
-                    ))
-                  : selectedFeature?.id === "rag-chatbot"
-                  ? [
-                      "Retrieval-augmented context for every query",
-                      "Multi-agent orchestration with LangGraph",
-                      "Live document ingestion and updating",
-                      "Advanced reasoning and tool chaining",
-                      "Enterprise-grade scalability and security",
-                      "Seamless API and UI integration",
-                    ].map((bullet, idx) => (
-                      <div key={idx} className="flex items-center gap-2">
-                        <Check className="text-white w-3.5 h-3.5 flex-shrink-0" />
-                        <span className="text-xs text-gray-300">{bullet}</span>
-                      </div>
-                    ))
-                  : selectedFeature?.id === "ai_fitness_plan"
-                  ? [
-                      "Real-time fitness and nutrition progress monitoring",
-                      "Secure storage of health, diet, and workout data",
-                      "Personalized access controls for tailored plans",
-                      "Smart AI-powered performance and health detection",
-                      "Built-in compliance with dietary restrictions and medical needs",
-                      "Detailed plan history and progress audit logging",
-                    ].map((bullet, idx) => (
-                      <div key={idx} className="flex items-center gap-2">
-                        <Check className="text-white w-3.5 h-3.5 flex-shrink-0" />
-                        <span className="text-xs text-gray-300">{bullet}</span>
-                      </div>
-                    ))
-                  : selectedFeature?.id === "analytics"
-                  ? [
-                      "Billing complexity insights to compare case mix across Single, Double, and Triple groups",
-                      "Average Billing CMI by complexity type (W/ MCC, W/ CC, No MCC/CC) for better benchmarking",
-                      "% of cases with queries and errors to identify compliance gaps",
-                      "Error trends by reviewer to improve coding accuracy",
-                      "Secure export of claims and case-level data for audits and compliance",
-                      "Predictive analytics to forecast billing complexity and revenue impact",
-                      "Custom KPIs for healthcare providers to track performance goals",
-                      "Interactive visualization tools for data-driven decision making",
-                    ].map((bullet, idx) => (
-                      <div key={idx} className="flex items-center gap-2">
-                        <Check className="text-white w-3.5 h-3.5 flex-shrink-0" />
-                        <span className="text-xs text-gray-300">{bullet}</span>
-                      </div>
-                    ))
-                  : selectedFeature?.id === "channel_pag_dashboard_features"
-                  ? [
-                      "Real-time tracking of global, regional, and quarterly sales attainment",
-                      "Regional performance insights across AMER, EMEA, and APAC markets",
-                      "Interactive attainment gauges and channel trend visualizations",
-                      "Detailed breakdown of sales motions including agencies, resellers, and hyperscale",
-                      "Channel vs non-channel revenue analysis across multiple quarters",
-                      "Deal size bucket tracking from <$10K to $1M+ for sales pipeline visibility",
-                      "Top 10 partner and top 10 product insights driving revenue growth",
-                    ].map((bullet, idx) => (
-                      <div key={idx} className="flex items-center gap-2">
-                        <Check className="text-white w-3.5 h-3.5 flex-shrink-0" />
-                        <span className="text-xs text-gray-300">{bullet}</span>
-                      </div>
-                    ))
-                  : [
-                      "Real-time retrieval from your knowledge sources",
-                      "End-to-end encrypted conversations",
-                      "Role-based access and agent-level controls",
-                      "Intelligent monitoring for query failures & anomalies",
-                      "Compliance-ready workflows for enterprise standards",
-                      "Detailed logs for audits and debugging",
-                    ].map((bullet, idx) => (
-                      <div key={idx} className="flex items-center gap-2">
-                        <Check className="text-white w-3.5 h-3.5 flex-shrink-0" />
-                        <span className="text-xs text-gray-300">{bullet}</span>
-                      </div>
-                    ))}
+              {/* Touch/Hover Inspect Action Badge */}
+              <div className="absolute bottom-4 right-4 z-10 hidden sm:block sm:opacity-0 sm:group-hover/img:opacity-100 transition-opacity duration-300">
+                <span className="inline-flex items-center px-4 py-2 rounded-full bg-white text-black text-xs font-semibold tracking-wider shadow-2xl">
+                  INSPECT HIGH-RES
+                </span>
               </div>
-
-              {/* Learn more button removed as requested */}
             </div>
-          </div>
+
+            {/* Editorial Metadata Footer */}
+            <motion.div
+              variants={footerVariants}
+              className="flex items-center justify-between text-[10px] sm:text-[11px] font-mono tracking-[0.15em] sm:tracking-[0.2em] text-zinc-400 uppercase px-0.5 pt-0.5"
+            >
+              <span className="text-zinc-300 font-medium">
+                {project.number} / {totalProjects < 10 ? `0${totalProjects}` : totalProjects} — {project.category}
+              </span>
+              <span className="hidden sm:inline-block text-zinc-500 truncate max-w-[260px]">
+                {project.urlLabel}
+              </span>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Column: Editorial Title & Specifications (5 cols) */}
+          <motion.div variants={contentVariants} className="lg:col-span-5 space-y-4 sm:space-y-6">
+            {/* Category Small-Caps Tag */}
+            <div className="flex items-center gap-2">
+              <span className="px-3 py-1 rounded-full bg-white/[0.05] border border-white/[0.1] text-zinc-200 text-[10px] sm:text-[11px] font-mono tracking-[0.15em] sm:tracking-[0.2em] uppercase font-semibold flex items-center gap-1.5 sm:gap-2">
+                <Icon className="size-3 sm:size-3.5 text-zinc-300" />
+                {project.category}
+              </span>
+            </div>
+
+            {/* Title & Description */}
+            <div>
+              <h3 className="font-[family-name:var(--font-plus-jakarta)] text-xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white mb-2 sm:mb-3 leading-snug sm:leading-[1.18] group-hover:text-white transition-colors">
+                {project.title}
+              </h3>
+              <p className="text-xs sm:text-base text-zinc-300/90 leading-relaxed font-normal">
+                {project.description}
+              </p>
+            </div>
+
+            {/* Capability Bullets */}
+            <div className="space-y-2 pt-0.5 sm:pt-1">
+              <h4 className="text-[10px] sm:text-[11px] font-mono font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-zinc-400">
+                KEY SYSTEM CAPABILITIES:
+              </h4>
+              {project.bullets.map((bullet, bIdx) => (
+                <div key={bIdx} className="flex items-start gap-2 text-xs sm:text-sm text-zinc-200">
+                  <Check className="size-3.5 sm:size-4 text-white shrink-0 mt-0.5" />
+                  <span className="leading-snug">{bullet}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Editorial Minimalist Tech Tags */}
+            <div className="pt-1 sm:pt-2">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                {project.tags.map((tag, tIdx) => (
+                  <span
+                    key={tIdx}
+                    className="px-2.5 py-1 sm:px-3 sm:py-1 rounded-md bg-white/[0.04] border border-white/[0.07] text-[10px] sm:text-xs font-mono text-zinc-300 tracking-wider uppercase font-medium"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
+export default function WorkSection() {
+  const [selectedModalProject, setSelectedModalProject] = useState<Project | null>(null);
+
+  return (
+    <section id="work" className="py-12 sm:py-24 md:py-36 bg-black text-white relative overflow-hidden">
+      {/* Background Radial Ambient Lighting */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[950px] h-[600px] bg-zinc-800/10 blur-[190px] pointer-events-none rounded-full" />
+
+      <div className="container mx-auto px-2 sm:px-4 md:px-6 max-w-7xl relative z-10">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16 md:mb-24 px-2 sm:px-0">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-zinc-300 text-xs font-mono tracking-[0.18em] uppercase mb-4 backdrop-blur-md"
+          >
+            <Sparkles className="size-3.5 text-zinc-400" />
+            <span>ENTERPRISE CASE STUDIES</span>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="font-[family-name:var(--font-plus-jakarta)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-4"
+          >
+            Glance at Our Work
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="text-base sm:text-lg text-zinc-400/90 max-w-2xl mx-auto leading-relaxed font-normal"
+          >
+            Scroll down to explore our autonomous AI agents, enterprise RAG architectures, and executive BI platforms.
+          </motion.p>
         </div>
 
-        {/* Mobile Layout - Cards with images */}
-        <div className="lg:hidden mt-16 space-y-6">
-          {/* Regular features */}
-          {features.main.map((feature) => (
-            <div key={feature.id} className="space-y-4">
-              {/* Feature Card */}
-              <div
-                className={cn(
-                  "border border-gray-800 rounded-lg overflow-hidden transition-all duration-300",
-                  expandedFeature === feature.id
-                    ? "bg-gray-900/50"
-                    : "bg-gray-900/20 hover:bg-gray-900/30"
-                )}
-              >
-                <div
-                  className="p-4 flex justify-between items-start cursor-pointer"
-                  onClick={() => toggleExpand(feature.id)}
-                >
-                  <div className="flex items-start gap-4 w-full">
-                    <div className="p-2 bg-gray-800/70 rounded-md mt-0.5">
-                      {getFeatureIcon(feature.id)}
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h3 className="font-medium text-base">
-                          {feature.title}
-                        </h3>
-                      </div>
-                      <p className="text-sm text-gray-400">
-                        {feature.description}
-                      </p>
-
-                      {/* Expanded content with feature bullets */}
-                      {expandedFeature === feature.id && (
-                        <div className="mt-4 ml-1 pt-3 border-t border-gray-800/50">
-                          <ul className="space-y-2 mt-2">
-                            {(
-                              feature.bullets || [
-                                "Real-time reporting and dashboards",
-                                "Custom metrics and KPIs",
-                                "Data visualization tools",
-                                "Export capabilities",
-                                "Predictive analysis",
-                              ]
-                            ).map((bullet, idx) => (
-                              <li key={idx} className="flex items-center gap-2">
-                                <Check className="text-white w-3.5 h-3.5" />
-                                <span className="text-sm text-gray-400">
-                                  {bullet}
-                                </span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                  {expandedFeature === feature.id ? (
-                    <ChevronUp className="text-gray-400 w-5 h-5 mt-1.5 ml-3 flex-shrink-0" />
-                  ) : (
-                    <ChevronDown className="text-gray-400 w-5 h-5 mt-1.5 ml-3 flex-shrink-0" />
-                  )}
-                </div>
-              </div>
-
-              {/* Feature Image - Shows right after the card */}
-              {feature.image && (
-                <div className="rounded-lg border border-gray-800 bg-gray-900/30 p-4">
-                  <div className="flex items-center mb-4">
-                    <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center mr-3">
-                      {getFeatureIcon(feature.id)}
-                    </div>
-                    <h4 className="text-lg font-medium">{feature.title}</h4>
-                  </div>
-                  <div className="relative bg-gray-800/50 rounded-lg overflow-hidden flex items-center justify-center">
-                    <Image
-                      src={feature.image}
-                      alt={feature.title}
-                      width={feature.width || 798}
-                      height={feature.height || 400}
-                      className="object-contain object-center opacity-90 w-full"
-                      style={{ maxWidth: "100%", height: "auto" }}
-                    />
-                  </div>
-                </div>
-              )}
-            </div>
+        {/* 3D Unfold Reveal Project Showcase Cards */}
+        <div className="space-y-6 sm:space-y-10 md:space-y-16">
+          {projects.map((project, idx) => (
+            <UnfoldProjectCard
+              key={project.id}
+              project={project}
+              idx={idx}
+              totalProjects={projects.length}
+              onOpenModal={(p) => setSelectedModalProject(p)}
+            />
           ))}
-
-          {/* AI Receptionist Chatbot */}
-          <div className="space-y-4">
-            {/* AI Receptionist Card */}
-            <div
-              className={cn(
-                "border border-gray-800 rounded-lg overflow-hidden transition-all duration-300 mt-5",
-                expandedFeature === "explore"
-                  ? "bg-gray-900/50"
-                  : "bg-gray-900/20 hover:bg-gray-900/30"
-              )}
-            >
-              <div
-                className="p-4 flex justify-between items-start cursor-pointer"
-                onClick={() => {
-                  if (expandedFeature === "explore") {
-                    setExpandedFeature(null);
-                  } else {
-                    setExpandedFeature("explore");
-                    setSelectedTab("explore");
-                  }
-                }}
-              >
-                <div className="flex items-start gap-4 w-full">
-                  <div className="p-2 bg-gray-800/70 rounded-md mt-0.5">
-                    {/* Diamond AI icon */}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-white"
-                    >
-                      <polygon points="12 2 22 9 12 22 2 9 12 2" />
-                      <circle cx="12" cy="12" r="3" />
-                    </svg>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-medium text-base mb-1">
-                      AI Receptionist Chatbot
-                    </h3>
-                    <p className="text-sm text-gray-400">
-                      AI-powered virtual receptionist that engages and qualifies
-                      leads 24/7 while improving customer experience with
-                      instant, personalized responses
-                    </p>
-
-                    {/* Expanded content */}
-                    {expandedFeature === "explore" && (
-                      <div className="mt-4 ml-1 pt-3 border-t border-gray-800/50">
-                        <ul className="space-y-2 mt-2">
-                          {[
-                            "Engage with customers in a natural, human-like conversation",
-                            "Available 7–12 hours daily (configurable for 24/7 support)",
-                            "Automatically request and store customer emails securely in the database",
-                            "Understand customer budgets and match them with suitable company offerings",
-                            "Assist repair inquiries by scheduling calls or escalating to human support",
-                            "Offer consultation for new, repairing, or upgrading services",
-                            "Handle urgent situations like alarms, malfunctions, or escalations in real time",
-                            "Assign customers to the right service plans and escalate to plan handlers if needed",
-                          ].map((bullet, idx) => (
-                            <li key={idx} className="flex items-center gap-2">
-                              <Check className="text-white w-3.5 h-3.5" />
-                              <span className="text-sm text-gray-400">
-                                {bullet}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                </div>
-                {expandedFeature === "explore" ? (
-                  <ChevronUp className="text-gray-400 w-5 h-5 mt-1.5 ml-3 flex-shrink-0" />
-                ) : (
-                  <ChevronDown className="text-gray-400 w-5 h-5 mt-1.5 ml-3 flex-shrink-0" />
-                )}
-              </div>
-            </div>
-
-            {/* AI Receptionist Image */}
-            <div className="rounded-lg border border-gray-800 bg-gray-900/30 p-4">
-              <div className="flex items-center mb-4">
-                <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center mr-3">
-                  {/* Diamond AI icon */}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-white"
-                  >
-                    <polygon points="12 2 22 9 12 22 2 9 12 2" />
-                    <circle cx="12" cy="12" r="3" />
-                  </svg>
-                </div>
-                <h4 className="text-lg font-medium">AI Receptionist Chatbot</h4>
-              </div>
-              <div className="relative bg-gray-800/50 rounded-lg overflow-hidden flex items-center justify-center">
-                <Image
-                  src="/AI receptionist.PNG"
-                  alt="AI Receptionist Chatbot"
-                  width={798}
-                  height={400}
-                  className="object-contain object-center opacity-90 w-full"
-                  style={{ maxWidth: "100%", height: "auto" }}
-                />
-              </div>
-            </div>
-          </div>
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedModalProject && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-black/95 backdrop-blur-2xl">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.25 }}
+              className="relative w-full max-w-5xl max-h-[92vh] bg-[#111115] border border-white/[0.1] rounded-3xl overflow-hidden shadow-2xl flex flex-col"
+            >
+              {/* Modal Header */}
+              <div className="flex items-center justify-between px-6 py-4 bg-[#0a0a0c] border-b border-white/[0.08] shrink-0">
+                <div className="flex items-center gap-3">
+                  <span className="font-mono text-xs text-zinc-400 tracking-widest">{selectedModalProject.number}</span>
+                  <h4 className="font-[family-name:var(--font-plus-jakarta)] text-base font-bold text-white truncate">{selectedModalProject.title}</h4>
+                </div>
+
+                <button
+                  onClick={() => setSelectedModalProject(null)}
+                  className="p-2 rounded-full bg-white/[0.05] border border-white/[0.08] text-zinc-300 hover:text-white transition-colors"
+                >
+                  <X className="size-5" />
+                </button>
+              </div>
+
+              {/* Modal Image */}
+              <div className="relative flex-1 min-h-[400px] w-full bg-[#0a0a0c] p-4">
+                <Image
+                  src={selectedModalProject.image}
+                  alt={selectedModalProject.title}
+                  fill
+                  className="object-contain object-center"
+                />
+              </div>
+
+              {/* Modal Footer */}
+              <div className="p-6 bg-[#111115] border-t border-white/[0.08] shrink-0">
+                <p className="text-sm text-zinc-300/90 mb-4 leading-relaxed">{selectedModalProject.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {selectedModalProject.tags.map((tag, idx) => (
+                    <span
+                      key={idx}
+                      className="px-3 py-1 rounded-md bg-white/[0.03] border border-white/[0.08] text-zinc-400 font-mono text-[10px] tracking-[0.14em] uppercase"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

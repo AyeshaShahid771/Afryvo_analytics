@@ -16,7 +16,7 @@ const logos = [
 
 export const LogoCloud = () => {
   return (
-    <section>
+    <section className="bg-black py-12">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="text-center mb-8">
           <p
