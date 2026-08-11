@@ -53,8 +53,27 @@ const projects: Project[] = [
     icon: Eye,
   },
   {
-    id: "sales_investment",
+    id: "solar_ai_receptionist",
     number: "02",
+    title: "AI Sales Receptionist for Automated Lead Conversion",
+    category: "AI-POWERED VOICE & CHAT RECEPTIONIST",
+    urlLabel: "SOLARTECH.AI / AI-RECEPTIONIST",
+    description:
+      "An intelligent AI receptionist that engages customers, qualifies solar leads, answers questions, generates personalized quotes, and schedules consultations automatically—24/7.",
+    image: "/solar.png",
+    tags: ["AI RECEPTIONIST", "LEAD QUALIFICATION", "AUTOMATED QUOTING", "APPOINTMENT SCHEDULING"],
+    bullets: [
+      "Human-Like AI Conversations — Understands customer questions & responds naturally",
+      "Intelligent Lead Qualification — Collects property details & identifies high-intent prospects",
+      "Automated Solar Quotes — Generates personalized estimates based on property data",
+      "Appointment Scheduling — Books consultations & follow-ups automatically",
+      "Lead Management & Analytics — Tracks conversations & conversion activity in real time",
+    ],
+    icon: Bot,
+  },
+  {
+    id: "sales_investment",
+    number: "03",
     title: "Executive Performance & Revenue Dashboard",
     category: "SALES & EXECUTIVE BI",
     urlLabel: "afryvo.ai/analytics/executive-sales",
@@ -72,7 +91,7 @@ const projects: Project[] = [
   },
   {
     id: "rag-chatbot",
-    number: "03",
+    number: "04",
     title: "LangGraph Multi-Agent RAG & SQL Chatbot",
     category: "AUTONOMOUS AI AGENTS",
     urlLabel: "afryvo.ai/agents/langgraph-rag",
@@ -87,24 +106,6 @@ const projects: Project[] = [
       "Automated email dispatch & meeting calendar scheduling directly from chat",
     ],
     icon: Brain,
-  },
-  {
-    id: "ai_receptionist",
-    number: "04",
-    title: "24/7 AI Virtual Receptionist Chatbot",
-    category: "AI VIRTUAL RECEPTIONIST",
-    urlLabel: "afryvo.ai/agents/virtual-receptionist",
-    description:
-      "AI virtual receptionist that engages, qualifies, and logs customer leads 24/7 while matching budgets to service packages and escalating urgent inquiries.",
-    image: "/AI receptionist.PNG",
-    tags: ["24/7 LEAD QUALIFICATION", "NATURAL LANGUAGE AI", "BUDGET MATCHING", "URGENT ESCALATIONS"],
-    bullets: [
-      "Natural, human-like conversations available 24 hours a day",
-      "Automated email capture & secure database logging",
-      "Customer budget qualification & service plan matching",
-      "Real-time escalation handling for emergency support calls",
-    ],
-    icon: Bot,
   },
   {
     id: "ai_fitness_plan",
