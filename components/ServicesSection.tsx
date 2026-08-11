@@ -225,26 +225,26 @@ export default function ServicesSection() {
                 </motion.div>
               </motion.div>
 
-              <TabsList className="inline-flex h-12 items-center justify-center rounded-full bg-zinc-950/90 p-1.5 text-zinc-400 border border-zinc-800 backdrop-blur-xl shadow-2xl">
+              <TabsList className="flex max-w-full overflow-x-auto no-scrollbar items-center justify-start sm:justify-center rounded-2xl sm:rounded-full bg-zinc-950/90 p-1 sm:p-1.5 text-zinc-400 border border-zinc-800 backdrop-blur-xl shadow-2xl w-full sm:w-auto">
                 <TabsTrigger
                   value="agenticAI"
-                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-200 cursor-pointer text-zinc-400 hover:text-white data-[state=active]:bg-zinc-800 data-[state=active]:text-white data-[state=active]:border data-[state=active]:border-zinc-500/80 data-[state=active]:shadow-[0_0_25px_rgba(255,255,255,0.35),0_0_50px_rgba(255,255,255,0.15)] group"
+                  className="inline-flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap rounded-full px-3.5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer text-zinc-400 hover:text-white data-[state=active]:bg-zinc-800 data-[state=active]:text-white data-[state=active]:border data-[state=active]:border-zinc-500/80 data-[state=active]:shadow-[0_0_25px_rgba(255,255,255,0.35),0_0_50px_rgba(255,255,255,0.15)] group flex-1 sm:flex-initial"
                 >
-                  <Bot className="size-4 shrink-0 text-zinc-400 group-hover:text-white data-[state=active]:text-white transition-colors" />
+                  <Bot className="size-3.5 sm:size-4 shrink-0 text-zinc-400 group-hover:text-white data-[state=active]:text-white transition-colors" />
                   <span>Agentic AI</span>
                 </TabsTrigger>
                 <TabsTrigger
                   value="business"
-                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-200 cursor-pointer text-zinc-400 hover:text-white data-[state=active]:bg-zinc-800 data-[state=active]:text-white data-[state=active]:border data-[state=active]:border-zinc-500/80 data-[state=active]:shadow-[0_0_25px_rgba(255,255,255,0.35),0_0_50px_rgba(255,255,255,0.15)] group"
+                  className="inline-flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap rounded-full px-3.5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer text-zinc-400 hover:text-white data-[state=active]:bg-zinc-800 data-[state=active]:text-white data-[state=active]:border data-[state=active]:border-zinc-500/80 data-[state=active]:shadow-[0_0_25px_rgba(255,255,255,0.35),0_0_50px_rgba(255,255,255,0.15)] group flex-1 sm:flex-initial"
                 >
-                  <BarChart3Icon className="size-4 shrink-0 text-zinc-400 group-hover:text-white data-[state=active]:text-white transition-colors" />
+                  <BarChart3Icon className="size-3.5 sm:size-4 shrink-0 text-zinc-400 group-hover:text-white data-[state=active]:text-white transition-colors" />
                   <span>Data Analytics</span>
                 </TabsTrigger>
                 <TabsTrigger
                   value="scalability"
-                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-200 cursor-pointer text-zinc-400 hover:text-white data-[state=active]:bg-zinc-800 data-[state=active]:text-white data-[state=active]:border data-[state=active]:border-zinc-500/80 data-[state=active]:shadow-[0_0_25px_rgba(255,255,255,0.35),0_0_50px_rgba(255,255,255,0.15)] group"
+                  className="inline-flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap rounded-full px-3.5 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer text-zinc-400 hover:text-white data-[state=active]:bg-zinc-800 data-[state=active]:text-white data-[state=active]:border data-[state=active]:border-zinc-500/80 data-[state=active]:shadow-[0_0_25px_rgba(255,255,255,0.35),0_0_50px_rgba(255,255,255,0.15)] group flex-1 sm:flex-initial"
                 >
-                  <ShieldCheckIcon className="size-4 shrink-0 text-zinc-400 group-hover:text-white data-[state=active]:text-white transition-colors" />
+                  <ShieldCheckIcon className="size-3.5 sm:size-4 shrink-0 text-zinc-400 group-hover:text-white data-[state=active]:text-white transition-colors" />
                   <span>Scalability</span>
                 </TabsTrigger>
               </TabsList>
