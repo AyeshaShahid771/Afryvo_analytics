@@ -326,16 +326,14 @@ function UnfoldProjectCard({
           <motion.div variants={imageVariants} className="lg:col-span-7 space-y-3 sm:space-y-4">
             <div
               onClick={() => onOpenModal(project)}
-              className="relative aspect-[16/9] sm:aspect-[16/10] w-full rounded-lg sm:rounded-2xl overflow-hidden bg-black border border-white/[0.08] shadow-2xl group/img cursor-pointer"
+              className="relative w-full rounded-lg sm:rounded-2xl overflow-hidden border border-white/[0.12] shadow-2xl group/img cursor-pointer bg-zinc-950"
             >
-              <Image
+              <img
                 src={project.image}
                 alt={project.title}
-                fill
-                sizes="(max-width: 1024px) 100vw, 60vw"
-                className="object-cover object-center opacity-95 contrast-[1.02] group-hover/img:opacity-100 group-hover/img:brightness-[1.04] transition-all duration-500"
+                className="w-full h-auto block opacity-95 contrast-[1.02] group-hover/img:opacity-100 group-hover/img:brightness-[1.04] transition-all duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover/img:opacity-30 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-40 group-hover/img:opacity-10 transition-opacity duration-500 pointer-events-none" />
 
               {/* Touch/Hover Inspect Action Badge */}
               <div className="absolute bottom-4 right-4 z-10 hidden sm:block sm:opacity-0 sm:group-hover/img:opacity-100 transition-opacity duration-300">
