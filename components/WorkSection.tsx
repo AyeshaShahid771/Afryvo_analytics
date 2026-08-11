@@ -9,6 +9,7 @@ import {
   Brain,
   Check,
   ExternalLink,
+  Eye,
   Layers,
   Sparkles,
   Trophy,
@@ -33,8 +34,27 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: "sales_investment",
+    id: "computer_vision_ai",
     number: "01",
+    title: "AI-Powered Computer Vision Detection & Intelligent Monitoring",
+    category: "AI-POWERED COMPUTER VISION",
+    urlLabel: "VISIONCORE.AI / COMPUTER-VISION",
+    description:
+      "Advanced computer vision platform designed to analyze live camera feeds, detect objects and anomalies, monitor safety, and turn visual data into actionable intelligence in real time.",
+    image: "/vision.png",
+    tags: ["COMPUTER VISION", "OBJECT DETECTION", "ANOMALY DETECTION", "REAL-TIME PROCESSING"],
+    bullets: [
+      "Real-time object & defect detection across live camera streams",
+      "AI-powered anomaly detection for identifying unusual patterns and events",
+      "Multi-camera vision processing with centralized monitoring and insights",
+      "Automated alerts & intelligent actions triggered by detected events",
+      "Custom computer vision models for industry-specific detection requirements",
+    ],
+    icon: Eye,
+  },
+  {
+    id: "sales_investment",
+    number: "02",
     title: "Executive Performance & Revenue Dashboard",
     category: "SALES & EXECUTIVE BI",
     urlLabel: "afryvo.ai/analytics/executive-sales",
@@ -52,7 +72,7 @@ const projects: Project[] = [
   },
   {
     id: "rag-chatbot",
-    number: "02",
+    number: "03",
     title: "LangGraph Multi-Agent RAG & SQL Chatbot",
     category: "AUTONOMOUS AI AGENTS",
     urlLabel: "afryvo.ai/agents/langgraph-rag",
@@ -70,7 +90,7 @@ const projects: Project[] = [
   },
   {
     id: "ai_receptionist",
-    number: "03",
+    number: "04",
     title: "24/7 AI Virtual Receptionist Chatbot",
     category: "AI VIRTUAL RECEPTIONIST",
     urlLabel: "afryvo.ai/agents/virtual-receptionist",
@@ -88,7 +108,7 @@ const projects: Project[] = [
   },
   {
     id: "ai_fitness_plan",
-    number: "04",
+    number: "05",
     title: "Voice AI Fitness & Routine Generator",
     category: "VOICE AI & HEALTH",
     urlLabel: "afryvo.ai/voice/fitness-routine-ai",
@@ -106,7 +126,7 @@ const projects: Project[] = [
   },
   {
     id: "fts_scorecard",
-    number: "05",
+    number: "06",
     title: "Field Specialist Performance Scorecard",
     category: "REGIONAL SCORECARDS",
     urlLabel: "afryvo.ai/analytics/fts-scorecard",
@@ -124,7 +144,7 @@ const projects: Project[] = [
   },
   {
     id: "sleep_expert_dashboard",
-    number: "06",
+    number: "07",
     title: "Retail Merchandising & Store Performance",
     category: "RETAIL OPERATIONS",
     urlLabel: "afryvo.ai/analytics/retail-store-stats",
@@ -142,7 +162,7 @@ const projects: Project[] = [
   },
   {
     id: "channel_pag_dashboard",
-    number: "07",
+    number: "08",
     title: "Global Channel PAG Revenue & Attainment",
     category: "GLOBAL CHANNEL SALES",
     urlLabel: "afryvo.ai/analytics/channel-pag-global",
