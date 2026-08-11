@@ -333,7 +333,7 @@ function UnfoldProjectCard({
                 alt={project.title}
                 fill
                 sizes="(max-width: 1024px) 100vw, 60vw"
-                className="object-cover sm:object-contain object-center opacity-95 contrast-[1.02] group-hover/img:opacity-100 group-hover/img:brightness-[1.04] transition-all duration-500"
+                className="object-cover object-center opacity-95 contrast-[1.02] group-hover/img:opacity-100 group-hover/img:brightness-[1.04] transition-all duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover/img:opacity-30 transition-opacity duration-500" />
 
