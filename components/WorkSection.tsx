@@ -72,8 +72,27 @@ const projects: Project[] = [
     icon: Bot,
   },
   {
-    id: "sales_investment",
+    id: "tiger_leads_ai",
     number: "03",
+    title: "Multi-Agent AI Lead Intelligence & Matching Platform",
+    category: "AI-POWERED LEAD INTELLIGENCE",
+    urlLabel: "TIGERLEADS.AI / AI-LEAD-MARKETPLACE",
+    description:
+      "A production-grade AI SaaS platform that connects suppliers and contractors through intelligent lead scoring, real-time matching, and automated routing—helping teams discover, evaluate, and unlock high-value opportunities faster.",
+    image: "/tiger.png",
+    tags: ["AI LEAD SCORING", "REAL-TIME MATCHING", "MULTI-AGENT AI", "MULTI-TENANT SAAS"],
+    bullets: [
+      "AI Lead Scoring & Matching — Ranks opportunities & routes them to relevant contractors",
+      "Real-Time Lead Marketplace — Browse live opportunities & bid on jobs confidently",
+      "Credit-Based Lead Unlocking — Scalable credit system supporting self-serve SaaS billing",
+      "Multi-Agent AI Orchestration — Automates intelligence & decision-making across the funnel",
+      "Multi-Tenant Architecture & Security — Enterprise RBAC, TLS 1.3, AES-256 & SOC-2 controls",
+    ],
+    icon: Sparkles,
+  },
+  {
+    id: "sales_investment",
+    number: "04",
     title: "Executive Performance & Revenue Dashboard",
     category: "SALES & EXECUTIVE BI",
     urlLabel: "afryvo.ai/analytics/executive-sales",
@@ -91,7 +110,7 @@ const projects: Project[] = [
   },
   {
     id: "rag-chatbot",
-    number: "04",
+    number: "05",
     title: "LangGraph Multi-Agent RAG & SQL Chatbot",
     category: "AUTONOMOUS AI AGENTS",
     urlLabel: "afryvo.ai/agents/langgraph-rag",
@@ -109,7 +128,7 @@ const projects: Project[] = [
   },
   {
     id: "ai_fitness_plan",
-    number: "05",
+    number: "06",
     title: "Voice AI Fitness & Routine Generator",
     category: "VOICE AI & HEALTH",
     urlLabel: "afryvo.ai/voice/fitness-routine-ai",
@@ -127,7 +146,7 @@ const projects: Project[] = [
   },
   {
     id: "fts_scorecard",
-    number: "06",
+    number: "07",
     title: "Field Specialist Performance Scorecard",
     category: "REGIONAL SCORECARDS",
     urlLabel: "afryvo.ai/analytics/fts-scorecard",
@@ -145,7 +164,7 @@ const projects: Project[] = [
   },
   {
     id: "sleep_expert_dashboard",
-    number: "07",
+    number: "08",
     title: "Retail Merchandising & Store Performance",
     category: "RETAIL OPERATIONS",
     urlLabel: "afryvo.ai/analytics/retail-store-stats",
@@ -163,7 +182,7 @@ const projects: Project[] = [
   },
   {
     id: "channel_pag_dashboard",
-    number: "08",
+    number: "09",
     title: "Global Channel PAG Revenue & Attainment",
     category: "GLOBAL CHANNEL SALES",
     urlLabel: "afryvo.ai/analytics/channel-pag-global",
