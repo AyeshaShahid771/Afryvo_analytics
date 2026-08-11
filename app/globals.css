@@ -121,6 +121,10 @@ html {
     @apply border-border outline-ring/50;
     transition: background-color 0.3s, color 0.3s;
   }
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-sans, sans-serif);

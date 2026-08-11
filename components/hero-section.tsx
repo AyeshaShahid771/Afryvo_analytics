@@ -44,20 +44,20 @@ export default function HeroSection() {
           className="relative bg-no-repeat min-h-screen md:min-h-[120vh] lg:min-h-[130vh]"
           style={{ 
             backgroundImage: 'url("/hero.png")',
-            backgroundSize: '120% 120%',
+            backgroundSize: 'cover',
             backgroundPosition: 'center'
           }}
         >
           {/* Background overlay for better text readability */}
           <div className="absolute inset-0 bg-black/50"></div>
-          <div className="relative mx-auto max-w-6xl px-2 pb-20 pt-16 lg:pt-24 z-10 min-h-screen md:min-h-[120vh] lg:min-h-[130vh] flex flex-col justify-center">
+          <div className="relative mx-auto max-w-6xl px-4 sm:px-6 pb-20 pt-16 lg:pt-24 z-10 min-h-screen md:min-h-[120vh] lg:min-h-[130vh] flex flex-col justify-center">
             <div className="relative z-10 mx-auto max-w-4xl text-left flex flex-col items-start -mt-8 sm:-mt-12 lg:-mt-38">
               {/* Spline animation background for hero section only */}
-              <h1 className="text-balance text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold max-w-4xl ml-6 sm:ml-8 md:ml-0 lg:-ml-16 text-left self-start leading-tight sm:leading-normal">
+              <h1 className="text-balance text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold max-w-4xl px-2 sm:px-0 sm:ml-8 md:ml-0 lg:-ml-16 text-left self-start leading-tight sm:leading-normal">
                 Future-ready businesses<br className="sm:hidden" /> with data analytics<br className="sm:hidden" /> and AI deployment
               </h1>
               {/* Subheading with icons and words - moved below headline, left aligned */}
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4 md:gap-6 mt-4 sm:mt-6 mb-6 text-muted-foreground text-base sm:text-lg font-medium self-start ml-6 sm:ml-8 md:ml-0 lg:-ml-16">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 md:gap-6 mt-4 sm:mt-6 mb-6 text-muted-foreground text-base sm:text-lg font-medium self-start px-2 sm:px-0 sm:ml-8 md:ml-0 lg:-ml-16">
                 <span className="flex items-center gap-1.5 sm:gap-2">
                   <BarChart2 className="w-4 h-4 sm:w-5 sm:h-5" /> Data Analytics
                 </span>

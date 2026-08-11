@@ -54,12 +54,12 @@ export default function TeamSection() {
           </div>
 
           {/* Organizational Hierarchy Diagram - Right Side */}
-          <div className="flex-1 w-full lg:w-auto min-w-0 z-10 mt-12 lg:mt-0">
+          <div className="flex-1 w-full lg:w-auto min-w-0 z-10 mt-12 lg:mt-0 overflow-hidden">
             <svg
               viewBox="80 0 780 540"
               className="w-full h-auto max-w-[780px] mx-auto"
               xmlns="http://www.w3.org/2000/svg"
-              overflow="visible"
+              overflow="hidden"
             >
               <defs>
                 <filter id="dotGlow" x="-100%" y="-100%" width="300%" height="300%">
