@@ -3,7 +3,7 @@ import Image from "next/image";
 const founder = {
   name: "Ahad Hassan Afridi",
   role: "Founder & CEO (Data Scientist)",
-  image: "/member1.png",
+  image: "/ahad_ceo.jpeg",
 };
 
 export default function TeamSection() {
