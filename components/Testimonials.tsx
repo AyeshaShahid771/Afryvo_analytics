@@ -29,30 +29,57 @@ export default function Testimonials() {
   return (
     <section id="testimonials" className="py-16 px-4 bg-black">
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-12 gap-6">
-          <div className="text-center md:text-left">
-            <h2 className="text-5xl md:text-6xl font-extrabold tracking-tight mt-2 mb-0 text-foreground">
-              350+
-            </h2>
-            <p className="text-base md:text-xl text-muted-foreground mt-4 md:mt-10 mb-2">
-              Dashboards and AI solutions built
-            </p>
-          </div>
-          <div className="flex-1 flex flex-col items-center md:items-end gap-4">
-            <div className="text-sm md:text-lg text-foreground font-medium mb-4 md:mb-2 text-center md:text-right leading-relaxed px-2 md:px-0">
-              Don’t just take our word for it—hear from people who’ve
-              transformed their businesses with our data analytics dashboards,
-              AI chatbots, and voice assistants
+        {/* Restructured Stat & Metric Header */}
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-16 gap-8 pb-10 border-b border-white/10">
+          {/* Left Side: Structured Key Metrics */}
+          <div className="flex flex-wrap items-center gap-6 sm:gap-10">
+            <div className="flex flex-col">
+              <span className="text-4xl sm:text-5xl font-extrabold text-white font-[family-name:var(--font-geist-sans)] tracking-tight">
+                50+
+              </span>
+              <span className="text-xs sm:text-sm font-mono uppercase tracking-wider text-zinc-400 mt-1.5 font-medium">
+                AI &amp; Agentic Projects
+              </span>
             </div>
-            <div className="flex flex-row gap-2 md:gap-2 w-full md:w-auto justify-center md:justify-end items-center">
-              <Button className="rounded-full px-3 md:px-6 py-2 text-xs md:text-base font-semibold flex-1 md:flex-none max-w-[140px] md:max-w-none">
-                Get Started with AI
+
+            <div className="hidden sm:block h-12 w-px bg-zinc-800" />
+
+            <div className="flex flex-col">
+              <span className="text-4xl sm:text-5xl font-extrabold text-white font-[family-name:var(--font-geist-sans)] tracking-tight">
+                200+
+              </span>
+              <span className="text-xs sm:text-sm font-mono uppercase tracking-wider text-zinc-400 mt-1.5 font-medium">
+                Data Analytics Dashboards
+              </span>
+            </div>
+
+            <div className="hidden sm:block h-12 w-px bg-zinc-800" />
+
+            <div className="flex flex-col">
+              <span className="text-4xl sm:text-5xl font-extrabold text-zinc-400 font-[family-name:var(--font-geist-sans)] tracking-tight">
+                350+
+              </span>
+              <span className="text-xs sm:text-sm font-mono uppercase tracking-wider text-zinc-500 mt-1.5 font-medium">
+                Total Solutions Built
+              </span>
+            </div>
+          </div>
+
+          {/* Right Side: Description & CTA Actions */}
+          <div className="max-w-xl space-y-4">
+            <p className="text-sm sm:text-base text-zinc-300 leading-relaxed font-normal">
+              Don’t just take our word for it—hear from founders and executives who’ve transformed their business operations with our autonomous AI agents, enterprise RAG architectures, and executive BI dashboards.
+            </p>
+            <div className="flex flex-wrap items-center gap-3 pt-1">
+              <Button asChild className="rounded-full px-5 py-2.5 text-xs sm:text-sm font-semibold bg-white text-black hover:bg-zinc-200 transition-colors">
+                <a href="#contact">Get Started with AI</a>
               </Button>
               <Button
+                asChild
                 variant="outline"
-                className="rounded-full px-3 md:px-6 py-2 text-xs md:text-base font-semibold flex-1 md:flex-none max-w-[120px] md:max-w-none"
+                className="rounded-full px-5 py-2.5 text-xs sm:text-sm font-semibold border-white/20 text-white hover:bg-white/10 transition-colors"
               >
-                Power with AI
+                <a href="#work">Explore Case Studies</a>
               </Button>
             </div>
           </div>
