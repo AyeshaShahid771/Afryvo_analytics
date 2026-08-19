@@ -110,8 +110,26 @@ const projects: Project[] = [
     icon: Layers,
   },
   {
-    id: "sales_investment",
+    id: "ai_fitness_plan",
     number: "05",
+    title: "Voice AI Fitness & Routine Generator",
+    category: "VOICE AI & HEALTH",
+    urlLabel: "afryvo.ai/voice/fitness-routine-ai",
+    description:
+      "Voice-interactive AI health assistant leveraging LangChain to generate personalized fitness and nutritional routines based on medical profiles and weekly goals.",
+    image: "/fit.png",
+    tags: ["VOICE ASSISTANT AI", "LANGCHAIN FRAMEWORK", "PERSONALIZED NUTRITION", "DYNAMIC WORKOUTS"],
+    bullets: [
+      "Voice-activated fitness assistant with instant plan generation",
+      "Personalized macro & calorie recommendations considering medical history",
+      "Custom workout schedules based on available days per week",
+      "Real-time routine adjustments and progress analytics",
+    ],
+    icon: Zap,
+  },
+  {
+    id: "sales_investment",
+    number: "06",
     title: "Executive Performance & Revenue Dashboard",
     category: "SALES & EXECUTIVE BI",
     urlLabel: "afryvo.ai/analytics/executive-sales",
@@ -129,7 +147,7 @@ const projects: Project[] = [
   },
   {
     id: "rag-chatbot",
-    number: "06",
+    number: "07",
     title: "LangGraph Multi-Agent RAG & SQL Chatbot",
     category: "AUTONOMOUS AI AGENTS",
     urlLabel: "afryvo.ai/agents/langgraph-rag",
@@ -144,24 +162,6 @@ const projects: Project[] = [
       "Automated email dispatch & meeting calendar scheduling directly from chat",
     ],
     icon: Brain,
-  },
-  {
-    id: "ai_fitness_plan",
-    number: "07",
-    title: "Voice AI Fitness & Routine Generator",
-    category: "VOICE AI & HEALTH",
-    urlLabel: "afryvo.ai/voice/fitness-routine-ai",
-    description:
-      "Voice-interactive AI health assistant leveraging LangChain to generate personalized fitness and nutritional routines based on medical profiles and weekly goals.",
-    image: "/fit.png",
-    tags: ["VOICE ASSISTANT AI", "LANGCHAIN FRAMEWORK", "PERSONALIZED NUTRITION", "DYNAMIC WORKOUTS"],
-    bullets: [
-      "Voice-activated fitness assistant with instant plan generation",
-      "Personalized macro & calorie recommendations considering medical history",
-      "Custom workout schedules based on available days per week",
-      "Real-time routine adjustments and progress analytics",
-    ],
-    icon: Zap,
   },
   {
     id: "fts_scorecard",
