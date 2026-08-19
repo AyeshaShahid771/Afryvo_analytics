@@ -59,15 +59,15 @@ const projects: Project[] = [
     category: "AI-POWERED VOICE & CHAT RECEPTIONIST",
     urlLabel: "SOLARTECH.AI / AI-RECEPTIONIST",
     description:
-      "An intelligent AI receptionist that engages customers, qualifies solar leads, answers questions, generates personalized quotes, and schedules consultations automatically—24/7.",
+      "An intelligent AI receptionist that engages customers, qualifies solar leads, answers questions, generates personalized quotes, and schedules consultations automatically 24/7.",
     image: "/solar.png",
     tags: ["AI RECEPTIONIST", "LEAD QUALIFICATION", "AUTOMATED QUOTING", "APPOINTMENT SCHEDULING"],
     bullets: [
-      "Human-Like AI Conversations — Understands customer questions & responds naturally",
-      "Intelligent Lead Qualification — Collects property details & identifies high-intent prospects",
-      "Automated Solar Quotes — Generates personalized estimates based on property data",
-      "Appointment Scheduling — Books consultations & follow-ups automatically",
-      "Lead Management & Analytics — Tracks conversations & conversion activity in real time",
+      "Human-Like AI Conversations: Understands customer questions & responds naturally",
+      "Intelligent Lead Qualification: Collects property details & identifies high-intent prospects",
+      "Automated Solar Quotes: Generates personalized estimates based on property data",
+      "Appointment Scheduling: Books consultations & follow-ups automatically",
+      "Lead Management & Analytics: Tracks conversations & conversion activity in real time",
     ],
     icon: Bot,
   },
@@ -78,15 +78,15 @@ const projects: Project[] = [
     category: "AI-POWERED LEAD INTELLIGENCE",
     urlLabel: "TIGERLEADS.AI / AI-LEAD-MARKETPLACE",
     description:
-      "A production-grade AI SaaS platform that connects suppliers and contractors through intelligent lead scoring, real-time matching, and automated routing—helping teams discover, evaluate, and unlock high-value opportunities faster.",
+      "A production-grade AI SaaS platform that connects suppliers and contractors through intelligent lead scoring, real-time matching, and automated routing, helping teams discover, evaluate, and unlock high-value opportunities faster.",
     image: "/tiger.png",
     tags: ["AI LEAD SCORING", "REAL-TIME MATCHING", "MULTI-AGENT AI", "MULTI-TENANT SAAS"],
     bullets: [
-      "AI Lead Scoring & Matching — Ranks opportunities & routes them to relevant contractors",
-      "Real-Time Lead Marketplace — Browse live opportunities & bid on jobs confidently",
-      "Credit-Based Lead Unlocking — Scalable credit system supporting self-serve SaaS billing",
-      "Multi-Agent AI Orchestration — Automates intelligence & decision-making across the funnel",
-      "Multi-Tenant Architecture & Security — Enterprise RBAC, TLS 1.3, AES-256 & SOC-2 controls",
+      "AI Lead Scoring & Matching: Ranks opportunities & routes them to relevant contractors",
+      "Real-Time Lead Marketplace: Browse live opportunities & bid on jobs confidently",
+      "Credit-Based Lead Unlocking: Scalable credit system supporting self-serve SaaS billing",
+      "Multi-Agent AI Orchestration: Automates intelligence & decision-making across the funnel",
+      "Multi-Tenant Architecture & Security: Enterprise RBAC, TLS 1.3, AES-256 & SOC-2 controls",
     ],
     icon: Sparkles,
   },
@@ -101,11 +101,11 @@ const projects: Project[] = [
     image: "/alliance.png",
     tags: ["LANGGRAPH AGENTS", "AI DOCUMENT INTELLIGENCE", "PERMIT AUTOMATION", "MULTI-TENANT SAAS"],
     bullets: [
-      "AI Permit Review Agents — Stateful LangGraph agents assist with multi-step permit review",
-      "Intelligent Document Processing — Identifies missing or incorrect documents automatically",
-      "Permit & Application Management — Tracks applications from submission to approval",
-      "Jurisdiction Intelligence — Centralizes AHJ contacts, requirements & vendor information",
-      "Automated Workflow & Notifications — Real-time milestone tracking & approval alerts",
+      "AI Permit Review Agents: Stateful LangGraph agents assist with multi-step permit review",
+      "Intelligent Document Processing: Identifies missing or incorrect documents automatically",
+      "Permit & Application Management: Tracks applications from submission to approval",
+      "Jurisdiction Intelligence: Centralizes AHJ contacts, requirements & vendor information",
+      "Automated Workflow & Notifications: Real-time milestone tracking & approval alerts",
     ],
     icon: Layers,
   },
@@ -349,7 +349,7 @@ function UnfoldProjectCard({
               className="flex items-center justify-between text-[10px] sm:text-[11px] font-mono tracking-[0.15em] sm:tracking-[0.2em] text-zinc-400 uppercase px-0.5 pt-0.5"
             >
               <span className="text-zinc-300 font-medium">
-                {project.number} / {totalProjects < 10 ? `0${totalProjects}` : totalProjects} — {project.category}
+                {project.number} / {totalProjects < 10 ? `0${totalProjects}` : totalProjects} | {project.category}
               </span>
               <span className="hidden sm:inline-block text-zinc-500 truncate max-w-[260px]">
                 {project.urlLabel}
