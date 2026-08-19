@@ -46,8 +46,8 @@ export default function Testimonials() {
             </p>
           </div>
 
-          {/* 3-Column Glassmorphic Stat Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+          {/* 2-Column Glassmorphic Stat Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 max-w-4xl mx-auto">
             <div className="relative group p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.08] backdrop-blur-xl hover:border-white/20 transition-all duration-300">
               <div className="font-[family-name:var(--font-playfair)] text-5xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-100 to-zinc-400 mb-3 leading-none">
                 50+
@@ -69,18 +69,6 @@ export default function Testimonials() {
               </div>
               <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-normal">
                 Executive BI portals, real-time KPI scorecards, and multi-channel revenue platforms.
-              </p>
-            </div>
-
-            <div className="relative group p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.08] backdrop-blur-xl hover:border-white/20 transition-all duration-300">
-              <div className="font-[family-name:var(--font-playfair)] text-5xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-100 to-zinc-400 mb-3 leading-none">
-                350+
-              </div>
-              <div className="text-xs font-mono uppercase tracking-widest text-zinc-400 font-semibold mb-2">
-                TOTAL SOLUTIONS DELIVERED
-              </div>
-              <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-normal">
-                Production-grade data &amp; AI systems powering high-growth enterprises worldwide.
               </p>
             </div>
           </div>
