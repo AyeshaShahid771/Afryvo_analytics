@@ -39,7 +39,7 @@ export default function TeamSection() {
                   alt={founder.name}
                   width={288}
                   height={288}
-                  className="object-contain object-center w-full h-full relative z-0"
+                  className="object-cover object-top w-full h-full relative z-0"
                 />
               </div>
             </div>
