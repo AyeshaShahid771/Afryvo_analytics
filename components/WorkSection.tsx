@@ -42,7 +42,7 @@ const projects: Project[] = [
     description:
       "Advanced computer vision platform designed to analyze live camera feeds, detect objects and anomalies, monitor safety, and turn visual data into actionable intelligence in real time.",
     image: "/vision.png",
-    tags: ["COMPUTER VISION", "OBJECT DETECTION", "ANOMALY DETECTION", "REAL-TIME PROCESSING"],
+    tags: ["YOLOv8 & OPENCV", "EDGE AI INFERENCE", "REAL-TIME VIDEO STREAMING", "ANOMALY & OCR DETECTION"],
     bullets: [
       "Real-time object & defect detection across live camera streams",
       "AI-powered anomaly detection for identifying unusual patterns and events",
@@ -61,7 +61,7 @@ const projects: Project[] = [
     description:
       "An intelligent AI receptionist that engages customers, qualifies solar leads, answers questions, generates personalized quotes, and schedules consultations automatically 24/7.",
     image: "/solar.png",
-    tags: ["AI RECEPTIONIST", "LEAD QUALIFICATION", "AUTOMATED QUOTING", "APPOINTMENT SCHEDULING"],
+    tags: ["STT / TTS VOICE AI", "LANGGRAPH AGENTS", "OPENAI & RAG PIPELINE", "AUTOMATED CRM SCHEDULING"],
     bullets: [
       "Human-Like AI Conversations: Understands customer questions & responds naturally",
       "Intelligent Lead Qualification: Collects property details & identifies high-intent prospects",
@@ -80,7 +80,7 @@ const projects: Project[] = [
     description:
       "A production-grade AI SaaS platform that connects suppliers and contractors through intelligent lead scoring, real-time matching, and automated routing, helping teams discover, evaluate, and unlock high-value opportunities faster.",
     image: "/tiger.png",
-    tags: ["AI LEAD SCORING", "REAL-TIME MATCHING", "MULTI-AGENT AI", "MULTI-TENANT SAAS"],
+    tags: ["MULTI-AGENT ORCHESTRATION", "AI LEAD SCORING", "MULTI-TENANT SAAS", "REAL-TIME MATCHING ENGINE"],
     bullets: [
       "AI Lead Scoring & Matching: Ranks opportunities & routes them to relevant contractors",
       "Real-Time Lead Marketplace: Browse live opportunities & bid on jobs confidently",
@@ -99,7 +99,7 @@ const projects: Project[] = [
     description:
       "An intelligent permitting operations platform that brings permit applications, leads, jurisdictions, documents, client communication, and AI-powered workflow automation into one connected workspace.",
     image: "/alliance.png",
-    tags: ["LANGGRAPH AGENTS", "AI DOCUMENT INTELLIGENCE", "PERMIT AUTOMATION", "MULTI-TENANT SAAS"],
+    tags: ["LANGGRAPH WORKFLOW AGENTS", "OCR & DOCUMENT AI", "AUTONOMOUS PERMIT ROUTING", "ENTERPRISE RBAC SAAS"],
     bullets: [
       "AI Permit Review Agents: Stateful LangGraph agents assist with multi-step permit review",
       "Intelligent Document Processing: Identifies missing or incorrect documents automatically",
@@ -118,7 +118,7 @@ const projects: Project[] = [
     description:
       "Voice-interactive AI health assistant leveraging LangChain to generate personalized fitness and nutritional routines based on medical profiles and weekly goals.",
     image: "/fit.png",
-    tags: ["VOICE ASSISTANT AI", "LANGCHAIN FRAMEWORK", "PERSONALIZED NUTRITION", "DYNAMIC WORKOUTS"],
+    tags: ["VOICE STT / TTS AGENT", "LANGCHAIN LLM ROUTING", "PERSONALIZED RAG ENGINE", "REAL-TIME BIOMETRIC AI"],
     bullets: [
       "Voice-activated fitness assistant with instant plan generation",
       "Personalized macro & calorie recommendations considering medical history",
@@ -136,7 +136,7 @@ const projects: Project[] = [
     description:
       "Interactive sales & investment dashboard delivering real-time lead qualification, campaign ROI analytics, and lifetime value distribution across customer segments.",
     image: "/board1.PNG",
-    tags: ["PIPELINE ANALYTICS", "LTV TRACKING", "CAMPAIGN ROI", "DONUT SEGMENTATION"],
+    tags: ["EXECUTIVE BI ANALYTICS", "REAL-TIME DATA PIPELINES", "LTV & FUNNEL FORECASTING", "POSTGRESQL & NEXT.JS"],
     bullets: [
       "Track Customer, Partner, Prospect & Referral Partner lifetime value",
       "Monitor monthly lead progression by qualification status (Qualified vs. Unqualified)",
@@ -154,7 +154,7 @@ const projects: Project[] = [
     description:
       "Enterprise Retrieval-Augmented Generation system powered by LangGraph agents capable of live database queries, document reasoning, and automated email dispatch.",
     image: "/chat.PNG",
-    tags: ["LANGGRAPH AGENTS", "VECTOR SEARCH RAG", "LIVE SQL QUERIES", "CALENDAR SYNC"],
+    tags: ["LANGGRAPH MULTI-AGENT", "VECTOR DB HYBRID RAG", "AUTONOMOUS SQL EXECUTION", "TOOL ORCHESTRATION"],
     bullets: [
       "Real-time contextual document retrieval via semantic vector search",
       "Multi-agent reasoning with dynamic tool orchestration for complex queries",
@@ -172,7 +172,7 @@ const projects: Project[] = [
     description:
       "Real-time scorecard tracking field training specialist rankings, finalized sales values, sales-per-hour metrics, and regional YOY growth.",
     image: "/board2.PNG",
-    tags: ["SPECIALIST LEADERBOARDS", "REGIONAL ATTAINMENT", "PIB METRICS", "YOY GROWTH"],
+    tags: ["REAL-TIME LEADERBOARD BI", "PERFORMANCE METRICS ENGINE", "KPI DRILL-DOWN ANALYTICS", "ENTERPRISE REPORTING"],
     bullets: [
       "Top-3 performer highlights with rank & finalized sales value",
       "New hire finalized PIB & 6-month average sales trends",
@@ -190,7 +190,7 @@ const projects: Project[] = [
     description:
       "Enterprise retail analytics suite tracking employee performance rankings, district/division metrics, gross margins, and vendor merchandise mix.",
     image: "/board3.png",
-    tags: ["DISTRICT LEADERBOARDS", "MERCHANDISE MIX", "AOV & ATTACH RATES", "VENDOR ANALYTICS"],
+    tags: ["RETAIL BI ANALYTICS", "MULTI-STORE DATA PIPELINES", "MERCHANDISE ATTACH RATES", "DYNAMIC HEATMAPS"],
     bullets: [
       "Real-time tracking of finalized sales, gross margins, and YOY growth",
       "District, regional, and division-level employee rankings",
@@ -208,7 +208,7 @@ const projects: Project[] = [
     description:
       "Global channel sales dashboard monitoring quarterly attainment across AMER, EMEA, and APAC regions with deal size bucket breakdowns.",
     image: "/board4.png",
-    tags: ["GLOBAL ATTAINMENT", "RESELLER ANALYTICS", "DEAL SIZE BUCKETS", "PARTNER LEADERBOARDS"],
+    tags: ["GLOBAL REVENUE ANALYTICS", "MULTI-REGION ATTAINMENT", "DEAL PIPELINE FORECASTING", "RESELLER BI METRICS"],
     bullets: [
       "AMER, EMEA, and APAC sales attainment monitoring with dynamic gauges",
       "Channel vs non-channel revenue comparisons across quarters",
