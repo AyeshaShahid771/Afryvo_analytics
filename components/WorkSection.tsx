@@ -369,7 +369,7 @@ function UnfoldProjectCard({
 
             {/* Title & Description */}
             <div>
-              <h3 className="font-[family-name:var(--font-plus-jakarta)] text-xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white mb-2 sm:mb-3 leading-snug sm:leading-[1.18] group-hover:text-white transition-colors">
+              <h3 className="font-[family-name:var(--font-geist-sans)] text-xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white mb-2 sm:mb-3 leading-snug sm:leading-[1.18] group-hover:text-white transition-colors">
                 {project.title}
               </h3>
               <p className="text-xs sm:text-base text-zinc-300/90 leading-relaxed font-normal">
@@ -437,7 +437,7 @@ export default function WorkSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="font-[family-name:var(--font-plus-jakarta)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-4"
+            className="font-[family-name:var(--font-geist-sans)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-4"
           >
             Glance at Our Work
           </motion.h2>
