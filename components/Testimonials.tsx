@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Sparkles } from "lucide-react";
 
 interface Testimonial {
   name: string;
@@ -10,7 +11,7 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     name: "Emil Nnani ",
-    role: "CEO of  Boazbikes",
+    role: "CEO of Boazbikes",
     text: "Ahad did a fantastic job in completing my project; whenever I needed changes, he worked on it and got it to me quickly. Help me through everything and knows what he is doing.",
   },
   {
@@ -27,60 +28,60 @@ const testimonials: Testimonial[] = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-16 px-4 bg-black">
+    <section id="testimonials" className="py-20 px-4 bg-black relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
-        {/* Restructured Stat & Metric Header */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-16 gap-8 pb-10 border-b border-white/10">
-          {/* Left Side: Structured Key Metrics */}
-          <div className="flex flex-wrap items-center gap-6 sm:gap-10">
-            <div className="flex flex-col">
-              <span className="text-4xl sm:text-5xl font-extrabold text-white font-[family-name:var(--font-geist-sans)] tracking-tight">
-                50+
-              </span>
-              <span className="text-xs sm:text-sm font-mono uppercase tracking-wider text-zinc-400 mt-1.5 font-medium">
-                AI &amp; Agentic Projects
-              </span>
+        {/* Classy Metric Showcase Header */}
+        <div className="mb-20">
+          {/* Header Title & Intro */}
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-zinc-300 text-xs font-mono tracking-[0.18em] uppercase mb-4 backdrop-blur-md">
+              <Sparkles className="size-3.5 text-zinc-400" />
+              <span>PROVEN IMPACT AT SCALE</span>
             </div>
-
-            <div className="hidden sm:block h-12 w-px bg-zinc-800" />
-
-            <div className="flex flex-col">
-              <span className="text-4xl sm:text-5xl font-extrabold text-white font-[family-name:var(--font-geist-sans)] tracking-tight">
-                200+
-              </span>
-              <span className="text-xs sm:text-sm font-mono uppercase tracking-wider text-zinc-400 mt-1.5 font-medium">
-                Data Analytics Dashboards
-              </span>
-            </div>
-
-            <div className="hidden sm:block h-12 w-px bg-zinc-800" />
-
-            <div className="flex flex-col">
-              <span className="text-4xl sm:text-5xl font-extrabold text-zinc-400 font-[family-name:var(--font-geist-sans)] tracking-tight">
-                350+
-              </span>
-              <span className="text-xs sm:text-sm font-mono uppercase tracking-wider text-zinc-500 mt-1.5 font-medium">
-                Total Solutions Built
-              </span>
-            </div>
+            <h2 className="font-[family-name:var(--font-geist-sans)] text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4">
+              Driving Enterprise AI &amp; Analytics
+            </h2>
+            <p className="text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed font-normal">
+              Hear from founders and executives who’ve transformed their business operations with our autonomous AI agents, enterprise RAG architectures, and executive BI dashboards.
+            </p>
           </div>
 
-          {/* Right Side: Description & CTA Actions */}
-          <div className="max-w-xl space-y-4">
-            <p className="text-sm sm:text-base text-zinc-300 leading-relaxed font-normal">
-              Don’t just take our word for it—hear from founders and executives who’ve transformed their business operations with our autonomous AI agents, enterprise RAG architectures, and executive BI dashboards.
-            </p>
-            <div className="flex flex-wrap items-center gap-3 pt-1">
-              <Button asChild className="rounded-full px-5 py-2.5 text-xs sm:text-sm font-semibold bg-white text-black hover:bg-zinc-200 transition-colors">
-                <a href="#contact">Get Started with AI</a>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                className="rounded-full px-5 py-2.5 text-xs sm:text-sm font-semibold border-white/20 text-white hover:bg-white/10 transition-colors"
-              >
-                <a href="#work">Explore Case Studies</a>
-              </Button>
+          {/* 3-Column Glassmorphic Stat Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+            <div className="relative group p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.08] backdrop-blur-xl hover:border-white/20 transition-all duration-300">
+              <div className="text-4xl sm:text-5xl font-extrabold text-white font-[family-name:var(--font-geist-sans)] tracking-tight mb-2">
+                50+
+              </div>
+              <div className="text-xs font-mono uppercase tracking-widest text-zinc-400 font-semibold mb-2">
+                AI &amp; AGENTIC PROJECTS
+              </div>
+              <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-normal">
+                Autonomous LangGraph agents, STT/TTS voice receptionists, and custom RAG pipelines.
+              </p>
+            </div>
+
+            <div className="relative group p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.08] backdrop-blur-xl hover:border-white/20 transition-all duration-300">
+              <div className="text-4xl sm:text-5xl font-extrabold text-white font-[family-name:var(--font-geist-sans)] tracking-tight mb-2">
+                200+
+              </div>
+              <div className="text-xs font-mono uppercase tracking-widest text-zinc-400 font-semibold mb-2">
+                DATA ANALYTICS DASHBOARDS
+              </div>
+              <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-normal">
+                Executive BI portals, real-time KPI scorecards, and multi-channel revenue platforms.
+              </p>
+            </div>
+
+            <div className="relative group p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.08] backdrop-blur-xl hover:border-white/20 transition-all duration-300">
+              <div className="text-4xl sm:text-5xl font-extrabold text-white font-[family-name:var(--font-geist-sans)] tracking-tight mb-2">
+                350+
+              </div>
+              <div className="text-xs font-mono uppercase tracking-widest text-zinc-400 font-semibold mb-2">
+                TOTAL SOLUTIONS DELIVERED
+              </div>
+              <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-normal">
+                Production-grade data &amp; AI systems powering high-growth enterprises worldwide.
+              </p>
             </div>
           </div>
         </div>
