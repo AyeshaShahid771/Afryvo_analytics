@@ -28,7 +28,7 @@ const testimonials: Testimonial[] = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-20 px-4 bg-black relative overflow-hidden">
+    <section id="testimonials" className="pt-28 sm:pt-36 pb-20 px-4 bg-black relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Classy Metric Showcase Header */}
         <div className="mb-20">
@@ -49,7 +49,7 @@ export default function Testimonials() {
           {/* 3-Column Glassmorphic Stat Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
             <div className="relative group p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.08] backdrop-blur-xl hover:border-white/20 transition-all duration-300">
-              <div className="text-4xl sm:text-5xl font-extrabold text-white font-[family-name:var(--font-geist-sans)] tracking-tight mb-2">
+              <div className="font-[family-name:var(--font-playfair)] text-5xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-100 to-zinc-400 mb-3 leading-none">
                 50+
               </div>
               <div className="text-xs font-mono uppercase tracking-widest text-zinc-400 font-semibold mb-2">
@@ -61,7 +61,7 @@ export default function Testimonials() {
             </div>
 
             <div className="relative group p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.08] backdrop-blur-xl hover:border-white/20 transition-all duration-300">
-              <div className="text-4xl sm:text-5xl font-extrabold text-white font-[family-name:var(--font-geist-sans)] tracking-tight mb-2">
+              <div className="font-[family-name:var(--font-playfair)] text-5xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-100 to-zinc-400 mb-3 leading-none">
                 200+
               </div>
               <div className="text-xs font-mono uppercase tracking-widest text-zinc-400 font-semibold mb-2">
@@ -73,7 +73,7 @@ export default function Testimonials() {
             </div>
 
             <div className="relative group p-6 sm:p-8 rounded-2xl bg-white/[0.02] border border-white/[0.08] backdrop-blur-xl hover:border-white/20 transition-all duration-300">
-              <div className="text-4xl sm:text-5xl font-extrabold text-white font-[family-name:var(--font-geist-sans)] tracking-tight mb-2">
+              <div className="font-[family-name:var(--font-playfair)] text-5xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-100 to-zinc-400 mb-3 leading-none">
                 350+
               </div>
               <div className="text-xs font-mono uppercase tracking-widest text-zinc-400 font-semibold mb-2">
