@@ -33,10 +33,10 @@ const DESCRIPTION =
 // rendered correctly on WhatsApp). Square, so link previews get the small
 // thumbnail treatment rather than a wide banner.
 const SHARE_IMAGE = {
-  url: "/android-icon-192x192.png",
-  width: 192,
-  height: 192,
-  alt: "Afryvo Analytics",
+  url: "/og-image.png",
+  width: 1200,
+  height: 630,
+  alt: "Afryvo Analytics — AI Integration for Business",
   type: "image/png",
 };
 
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
     images: [SHARE_IMAGE],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
     images: [SHARE_IMAGE],
