@@ -53,7 +53,7 @@ export default async function handler(req, res) {
     attachments: [
       {
         filename: "new_black_logo.png",
-        path: "c:\\Users\\Ayesha Shahid\\Downloads\\new_black_logo.png",
+        path: path.join(process.cwd(), "public", "new_black_logo.png"),
         cid: "afryvo-logo",
       },
     ],
@@ -61,7 +61,11 @@ export default async function handler(req, res) {
 
   try {
     await transporter.sendMail(adminMailOptions);
-    await transporter.sendMail(userMailOptions);
+    try {
+      await transporter.sendMail(userMailOptions);
+    } catch (userEmailErr) {
+      console.error("Auto-reply email error:", userEmailErr);
+    }
     return res.status(200).json({ success: true });
   } catch (error) {
     console.error("Email error:", error);

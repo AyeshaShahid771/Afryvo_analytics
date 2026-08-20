@@ -63,7 +63,7 @@ export default function Footer() {
       </div>
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 mt-8 pt-4 border-t border-gray-200 dark:border-gray-700 text-xs md:text-sm px-2">
         <span className="text-gray-500 dark:text-gray-400 text-center">
-          © 2025 Afryvo analytics. All rights reserved.
+          © {new Date().getFullYear()} Afryvo analytics. All rights reserved.
         </span>
         <div className="flex flex-col md:flex-row gap-2 md:gap-4 text-center">
           <span className="text-gray-500 dark:text-gray-400">
